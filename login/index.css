@@ -14,7 +14,7 @@ body {
 /* ---------------------------------------------------- */
 #mainHeader {
     background-color: #0d0d0d; /* Nền cực tối cho header */
-    border-bottom: 3px solid #00c853; /* Đường viền xanh lá làm điểm nhấn */
+    border-bottom: 3px solid #fb44cd; /* Đường viền xanh lá làm điểm nhấn */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Thêm độ sâu */
     width: 100%;
 }
@@ -39,7 +39,7 @@ body {
 }
 
 .logo:hover {
-    color: #00e676; 
+    color: #fb44cd; 
 }
 
 /* Nhóm trạng thái (Đăng nhập/Đăng ký) */
@@ -64,25 +64,25 @@ body {
 
 /* Nút Đăng Nhập (primary-btn) - Nền xanh lá đặc */
 .primary-btn {
-    background-color: #00c853;
+    background-color: #fb44cd;
     color: #1a1a1a; 
-    border-color: #00c853;
+    border-color: #fb44cd;
 }
 .primary-btn:hover {
-    background-color: #00e676;
-    border-color: #00e676;
+    background-color: #fb44cd;
+    border-color: #fb44cd;
     transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(0, 200, 83, 0.4);
+    box-shadow: 0 3px 8px rgba(247, 61, 225, 0.666);
 }
 
 /* Nút Đăng Ký (secondary-btn) - Viền xanh lá */
 .secondary-btn {
     background-color: transparent;
-    color: #00c853; 
-    border-color: #00c853; 
+    color: #fb44cd; 
+    border-color: #fb44cd; 
 }
 .secondary-btn:hover {
-    background-color: #00c853; 
+    background-color: #fb44cd; 
     color: #1a1a1a; 
     transform: scale(1.03);
 }

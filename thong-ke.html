@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Bàn</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/thong-ke.css">
+
     </head>
 <body>
     
@@ -17,7 +19,6 @@
             <a href="login/index.html">Đăng xuất</a>
         </div>
     </div>
-
     <div class="main-container">
         <div class="main-menu">
             <ul>
@@ -30,7 +31,39 @@
         </div>
 
          <div class="main-content" >
-            
+            <main class="main-tk">
+        <h1 class="title">TỔNG QUAN HỆ THỐNG</h1>
+
+        <div class="grid">
+          <div class="card">
+            <h3>TRẠNG THÁI HOẠT ĐỘNG</h3>
+            <p class="big">Bàn đang chơi: <span>8/15</span></p>
+            <input type="date" />
+          </div>
+          <div class="card">
+            <h3>DOANH THU HÔM NAY</h3>
+            <p class="money">5.500.000 VND</p>
+          </div>
+
+          <div class="card">
+            <h3>BẢNG ĐIỀU KHIỂN BÀN</h3>
+            <div class="table-grid">
+              <div class="cell a">A</div>
+              <div class="cell">4</div>
+              <div class="cell">2</div>
+              <div class="cell">A</div>
+              <div class="cell a">A</div>
+              <div class="cell">8</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>BIỂU ĐỒ DOANH THU TUẦN</h3>
+            <canvas id="chart"></canvas>
+          </div>
+        </div>
+      </main>
+    </div>
         </div>
     </div>
 
@@ -72,7 +105,7 @@
 </footer>
     
 
-
+<script src="js/thong-ke.js"></script>
 </body>
 <script src="js/main.js"></script>
 </html>

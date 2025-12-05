@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f0f0f;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 260px;
+    background: #121212;
+    height: 100vh;
+    padding: 20px;
+    box-shadow: 2px 0 20px rgba(0, 255, 255, 0.05);
+}
+
+.logo {
+    color: #00ffd0;
+    margin-bottom: 40px;
+    font-size: 22px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 12px 0;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.menu li:hover,
+.menu li.active {
+    opacity: 1;
+    color: #00ffd0;
+}
+
+.main {
+    flex: 1;
+    padding: 30px;
+    min-width: 0;    
+}
+
+.title {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: #191919;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(0,255,255,0.05);
+}
+
+.card h3 {
+    color: #00ffd0;
+    margin-bottom: 15px;
+}
+
+.big span {
+    color: #00ffd0;
+}
+
+.money {
+    color: #00ffd0;
+    font-size: 26px;
+    margin-top: 10px;
+}
+
+.table-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.cell {
+    background: #222;
+    padding: 12px;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid rgba(0,255,255,0.15);
+}
+
+.cell.a {
+    background: #00ffd0;
+    color: #000;
+    font-weight: bold;
+}
+.topbar {
+    width: 100%;
+    background: #222;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.top-actions button {
+    margin-left: 10px;
+    padding: 6px 10px;      
+    font-size: 14px;        
+    border: none;
+    background: #333333 ;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;    
+    width: auto;           
+}
+
+.top-actions button:hover {
+    background: #333333 ;
+}
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;               
+}

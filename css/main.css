@@ -44,7 +44,6 @@ body {
     color: #ffffff;
 }
 
-
 /* --- Vùng Chính (Bao gồm Menu và Nội dung) --- */
 .main-container {
     display: flex;
@@ -80,7 +79,7 @@ body {
     margin-bottom: 5px; 
     border-left: 5px solid transparent; 
     transition: background-color 0.3s, border-left-color 0.3s;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .main-menu li a:hover {

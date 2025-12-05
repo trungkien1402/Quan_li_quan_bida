@@ -6,7 +6,7 @@ body {
 }
 /* Tiêu đề chính */
 #form-register h3 { /* Giả sử form Đăng Ký có ID là #form-register */
-    color: #00c853; /* Xanh lá accent */
+    color: #fb44cd; /* Xanh lá accent */
     font-weight: 400;
     margin-bottom: 30px;
 }
@@ -22,7 +22,7 @@ body {
     
     /* Hiệu ứng Glow/Shadow */
     box-shadow: 
-        0 0 15px rgba(0, 200, 83, 0.4), /* Ánh sáng xanh lá nhẹ (glow) */
+        0 0 15px rgb(202, 40, 172), /* Ánh sáng xanh lá nhẹ (glow) */
         0 10px 30px rgba(0, 0, 0, 0.9); /* Độ sâu tối */
     
     transition: all 0.3s ease;
@@ -30,7 +30,7 @@ body {
 
 #form-register:hover {
     box-shadow: 
-        0 0 25px rgba(0, 200, 83, 0.6), 
+        0 0 25px rgb(202, 40, 172), 
         0 15px 40px rgba(0, 0, 0, 1);
 }
 /* Input Controls */
@@ -49,8 +49,8 @@ body {
 
 #form-register .form-control:focus {
     background-color: #333;
-    border-color: #00c853; /* Xanh lá làm focus */
-    box-shadow: 0 0 5px rgba(0, 200, 83, 0.5);
+    border-color: #fb44cd; /* Xanh lá làm focus */
+    box-shadow: 0 0 5px rgb(202, 40, 172);
     color: #fff;
 }
 
@@ -64,9 +64,9 @@ body {
 /* Customizing Bootstrap Button (Đăng Ký) */
 /* LƯU Ý: Nếu nút Đăng Ký cũng dùng lớp .btn-outline-primary */
 #form-register .btn-outline-primary {
-    background-color: #00c853; 
+    background-color: #fb44cd; 
     color: #1a1a1a; 
-    border-color: #00c853; 
+    border-color: #fb44cd; 
     
     font-weight: bold;
     padding: 12px;
@@ -74,20 +74,20 @@ body {
 }
 
 #form-register .btn-outline-primary:hover {
-    background-color: #00e676;
-    border-color: #00e676;
+    background-color: #fb44cd;
+    border-color: #fb44cd;
     color: #1a1a1a;
     transform: translateY(-1px); 
 }
 
 /* Link Đăng Nhập (Nếu có) */
 #form-register a {
-    color: #00c853;
+    color: #fb44cd;
     text-decoration: none;
     transition: color 0.2s;
 }
 
 #form-register a:hover {
-    color: #00e676;
+    color: #fb44cd;
     text-decoration: underline;
 }

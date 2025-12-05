@@ -11,9 +11,10 @@
     
     <div class="main-header">
         <div class="logo">
-            <b>Quản Lí Quán BiDa</b>
+            <img src="assets/ball.png" alt="lỗi">
+            <b>BILLIARD MANAGEMENT</b>
         </div>
-        <div class="accoutn">
+        <div class="account">
             <a href="thongtin">Thông Tin</a>
             <a href="login/index.html">Đăng xuất</a>
         </div>
@@ -31,65 +32,62 @@
         </div>
 
          <div class="main-content" >
-            <div class="container">
- 
-  <div class="left">
-    <h2>NHÂN VIÊN VÀ CA LÀM</h2>
-    <input type="text" id="search" placeholder="🔍 Tìm nhân viên...">
+          <div class="left">
+            <h2>NHÂN VIÊN VÀ CA LÀM</h2>
+            <input type="text" id="search" placeholder="🔍 Tìm nhân viên...">
 
-    <div>
-      <h3 onclick="hienThi('ql')">Quản Lý ▼</h3>
-      <ul id="ql" style="display:none;"></ul>
-    </div>
+            <div>
+              <h3 onclick="hienThi('ql')">Quản Lý ▼</h3>
+              <ul id="ql" style="display:none;"></ul>
+            </div>
 
-    <div>
-      <h3 onclick="hienThi('pv')">Phục Vụ ▼</h3>
-      <ul id="pv" style="display:none;"></ul>
-    </div>
+            <div>
+              <h3 onclick="hienThi('pv')">Phục Vụ ▼</h3>
+              <ul id="pv" style="display:none;"></ul>
+            </div>
 
-    <div>
-      <h3 onclick="hienThi('tn')">Thu Ngân ▼</h3>
-      <ul id="tn" style="display:none;"></ul>
-    </div>
+            <div>
+              <h3 onclick="hienThi('tn')">Thu Ngân ▼</h3>
+              <ul id="tn" style="display:none;"></ul>
+            </div>
 
-    <button onclick="themNhanVien()">+ Thêm</button>
-    <button id="xoaNV" onclick="xoaNhanVien()">- Xóa</button>
-  </div>
+            <button onclick="themNhanVien()">+ Thêm</button>
+            <button id="xoaNV" onclick="xoaNhanVien()">- Xóa</button>
+          </div>
 
-  <div class="right">
-    <h2 class="title" id="tenNV">Chưa chọn nhân viên</h2>
-    <div class="lich">
-      <table>
-        <tr><th colspan="8" id="ngay"></th></tr>
-        <tr>
-          <th>Ca Làm</th>
-          <th>Thứ 2</th><th>Thứ 3</th><th>Thứ 4</th>
-          <th>Thứ 5</th><th>Thứ 6</th><th>Thứ 7</th><th>CN</th>
-        </tr>
-        <tr id="rowSang">
-          <td>Sáng</td>
-          <td id="sang2"></td><td id="sang3"></td><td id="sang4"></td>
-          <td id="sang5"></td><td id="sang6"></td><td id="sang7"></td><td id="sangCN"></td>
-        </tr>
-        <tr id="rowChieu">
-          <td>Chiều</td>
-          <td id="chieu2"></td><td id="chieu3"></td><td id="chieu4"></td>
-          <td id="chieu5"></td><td id="chieu6"></td><td id="chieu7"></td><td id="chieuCN"></td>
-        </tr>
-        <tr id="rowToi">
-          <td>Tối</td>
-          <td id="toi2"></td><td id="toi3"></td><td id="toi4"></td>
-          <td id="toi5"></td><td id="toi6"></td><td id="toi7"></td><td id="toiCN"></td>
-        </tr>
-      </table>
-    </div>
+          <div class="right">
+            <h2 class="title" id="tenNV">Chưa chọn nhân viên</h2>
+            <div class="lich">
+              <table>
+                <tr><th colspan="8" id="ngay"></th></tr>
+                <tr>
+                  <th>Ca Làm</th>
+                  <th>Thứ 2</th><th>Thứ 3</th><th>Thứ 4</th>
+                  <th>Thứ 5</th><th>Thứ 6</th><th>Thứ 7</th><th>CN</th>
+                </tr>
+                <tr id="rowSang">
+                  <td>Sáng</td>
+                  <td id="sang2"></td><td id="sang3"></td><td id="sang4"></td>
+                  <td id="sang5"></td><td id="sang6"></td><td id="sang7"></td><td id="sangCN"></td>
+                </tr>
+                <tr id="rowChieu">
+                  <td>Chiều</td>
+                  <td id="chieu2"></td><td id="chieu3"></td><td id="chieu4"></td>
+                  <td id="chieu5"></td><td id="chieu6"></td><td id="chieu7"></td><td id="chieuCN"></td>
+                </tr>
+                <tr id="rowToi">
+                  <td>Tối</td>
+                  <td id="toi2"></td><td id="toi3"></td><td id="toi4"></td>
+                  <td id="toi5"></td><td id="toi6"></td><td id="toi7"></td><td id="toiCN"></td>
+                </tr>
+              </table>
+            </div>
 
-    <div style="text-align:center;">
-      <button onclick="capNhat()">💾 Cập nhật</button>
-      <button onclick="resetLuaChon()">🔁 Chọn lại</button>
-    </div>
-  </div>
-</div>
+            <div style="text-align:center;">
+              <button onclick="capNhat()">💾 Cập nhật</button>
+              <button onclick="resetLuaChon()">🔁 Chọn lại</button>
+            </div>
+          </div>
         </div>
     </div>
 

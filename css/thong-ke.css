@@ -5,25 +5,7 @@ body {
     color: #fff;
 }
 
-.container {
-    display: flex;
-    width: 100%;
-    overflow: hidden;
-}
 
-.sidebar {
-    width: 260px;
-    background: #121212;
-    height: 100vh;
-    padding: 20px;
-    box-shadow: 2px 0 20px rgba(0, 255, 255, 0.05);
-}
-
-.logo {
-    color: #00ffd0;
-    margin-bottom: 40px;
-    font-size: 22px;
-}
 
 .menu {
     list-style: none;

@@ -1,31 +1,3 @@
-:root {
-    --primary-color: #00d2b4; /* Màu xanh ngọc chủ đạo */
-    --bg-dark: #0c0c0c;       /* MÀU MỚI: Đen tối theo ảnh bạn gửi */
-    --card-bg: #1e1e1e;
-    --text-color: #ffffff;
-    --text-gray: #aaaaaa;
-    --border-glow: 0 0 10px rgba(0, 210, 180, 0.3);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-color);
-    min-height: 100vh;
-    /* Đã bỏ background-image và lớp phủ mờ */
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
 
 /* --- HEADER --- */
 .header {

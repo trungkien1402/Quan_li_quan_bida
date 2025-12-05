@@ -41,7 +41,7 @@ body {
 }
 
 /* --- Tiêu đề Trang (Trang Chủ/Quản Lý Bàn) --- */
-.main-h {
+.h {
     width: 95%;
     height: 60px;
     padding-left: 50px;
@@ -102,7 +102,7 @@ body {
 }
 
 /* --- Khối Footer Chính --- */
-.main-app-footer {
+.app-footer {
     background-color: #1a1a1a; 
     color: #cccccc; 
     padding: 30px 0 10px 0;

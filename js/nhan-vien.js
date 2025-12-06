@@ -143,7 +143,7 @@ function themNhanVien() {
 function xoaNhanVien() {
   Xoa = !Xoa;
   const xoaBtn = document.getElementById("xoaNV");
-  xoaBtn.textContent = Xoa ? "Chọn tên để xóa" : "- Xóa";
+  xoaBtn.textContent = Xoa ? "Chọn tên để xóa" : "🗑️ Xóa";
   const leftPanel = document.querySelector(".left");
   if (Xoa) {
     leftPanel.classList.add("deleting");

@@ -1,0 +1,450 @@
+/* ===================== CONTENT WRAPPER ===================== */
+.content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.main-area {
+    flex-grow: 1;
+    max-width: calc(100% - 300px);
+}
+
+.content-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+}
+
+/* ===================== TABS & TAB CONTENT ===================== */
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #3c3f47;
+    margin-bottom: 20px;
+}
+
+.tab {
+    text-decoration: none;
+    color: #b0b3b8;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: 0.2s;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+}
+
+.tab.active {
+    color: #00c8ff;
+    border-bottom-color: #00c8ff;
+}
+
+.tab:hover {
+    color: white;
+}
+
+.tab-content {
+    display: none; 
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ===================== CONTAINER BÀN ===================== */
+/* Áp dụng riêng cho nội dung Danh sách bàn */
+.tab-content#table-list .table-group-title { 
+    font-size: 18px;
+    color: #00c8ff;
+    margin: 15px 0 10px 0;
+}
+
+.table-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0 0 30px;
+    box-sizing: border-box;
+}
+
+/* ===================== Ô BÀN ===================== */
+.table-box {
+    background: #2a2d33;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+    border: 2px solid #3c3f47;
+    transition: 0.2s;
+    text-align: center;
+}
+
+.table-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.6);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+.table-box h3 {
+    margin: 0;
+    font-size: 18px;
+}
+.table-info {
+    font-size: 12px;
+    color: #b0b3b8;
+    margin: 0 0 10px 0;
+}
+
+.btn-xoa {
+    background: none;
+    color: #555;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+.btn-xoa:hover {
+    color: red;
+}
+
+.table-box.trong {
+    border-color: #00b34a; /* Xanh lá cây (Trống) */
+}
+
+.table-box.dangchoi {
+    border-color: #00c8ff; /* Xanh dương (Đang chơi) */
+}
+
+.table-box.datcho {
+    border-color: #ff8a00; /* Cam (Đặt chỗ) */
+}
+
+.timer {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+    color: #00c8ff;
+    border-bottom: 1px solid #3c3f47;
+    padding-bottom: 10px;
+}
+.table-box.trong .timer {
+    color: #b0b3b8;
+}
+
+/* NÚT */
+.btn {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: 0.2s;
+}
+
+.btn-small {
+    width: 48%;
+    display: inline-block;
+    padding: 6px;
+    font-size: 13px;
+}
+
+.btn-mo {
+    background: #00b34a;
+    color: white;
+}
+.btn-mo:hover {
+    background: #00d85a;
+}
+
+.btn-tinh {
+    background: #ff4242;
+    color: white;
+}
+.btn-tinh:hover {
+    background: #ff5f5f;
+}
+
+.btn-cancel {
+    background: #555;
+    color: white;
+}
+.btn-cancel:hover {
+    background: #777;
+}
+
+
+/* Ô DẤU + */
+.add-box {
+    height: auto; 
+    background: #2a2d33;
+    border-radius: 8px;
+    border: 2px dashed #555;
+    color: #555;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 40px 0;
+}
+
+.add-box:hover {
+    background: #3c3f47;
+    border-color: #00c8ff;
+    color: #00c8ff;
+}
+
+/* ===================== BILL BOX ===================== */
+.bill-box {
+    width: 260px;
+    background: #2a2d33;
+    padding: 25px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #3c3f47;
+    line-height: 1.8;
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.bill-box h3 {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #3c3f47;
+    padding-bottom: 10px;
+}
+
+.bill-box p {
+    margin: 8px 0;
+    color: #b0b3b8;
+}
+
+.bill-box span {
+    color: white;
+    font-weight: bold;
+    float: right;
+}
+
+.bill-box p:nth-child(6) span,
+.bill-box p:nth-child(7) span {
+    float: none;
+    display: block;
+    margin-left: 20px;
+    font-weight: normal;
+}
+
+.bill-box h3:last-child {
+    text-align: right;
+    font-size: 20px;
+    color: #ff8a00;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 2px solid #ff8a00;
+}
+.bill-box h3:last-child span {
+    color: #ff8a00;
+}
+
+/* ===================== LỊCH ĐẶT BÀN (BOOKING SCHEDULE) ===================== */
+.booking-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.booking-item {
+    background: #2a2d33;
+    border-radius: 8px;
+    padding: 15px;
+    border: 2px solid #ff8a00; 
+    transition: 0.2s;
+    line-height: 1.5;
+}
+
+.booking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #3c3f47;
+}
+
+.booking-table-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #00c8ff;
+}
+
+.booking-status {
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #2a2d33;
+    background: #ff8a00;
+}
+
+.booking-item p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #b0b3b8;
+}
+
+.booking-item p strong {
+    color: white;
+}
+
+.booking-note {
+    margin-top: 10px;
+    padding: 8px;
+    background: #3c3f47;
+    border-radius: 4px;
+    border-left: 3px solid #00c8ff;
+}
+
+.note-title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: bold;
+    color: #00c8ff;
+}
+
+.note-content {
+    display: block;
+    font-style: italic;
+    font-size: 13px;
+    color: #dffaff;
+    margin-top: 4px;
+}
+
+.booking-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-new-booking {
+    text-align: center;
+    border: 2px dashed #00b34a;
+    color: #00b34a;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.add-new-booking:hover {
+    background: #3c3f47;
+    border-color: white;
+    color: white;
+}
+
+/* ===================== MODAL (POP-UP) ===================== */
+.modal {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #2a2d33;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0,200,255,0.4);
+    position: relative;
+    color: white;
+}
+
+.modal-content h3 {
+    text-align: center;
+    color: #00c8ff;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #b0b3b8;
+    font-size: 14px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="time"],
+.modal-content select,
+.modal-content textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box;
+    border: 1px solid #3c3f47;
+    border-radius: 5px;
+    background-color: #1e1f23;
+    color: white;
+    font-size: 14px;
+}
+
+.modal-content textarea {
+    resize: vertical;
+}
+
+#saveBookingBtn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 16px;
+}
+
+/* Class để ẩn Modal và Tab Content */
+.hidden {
+    display: none !important;
+}

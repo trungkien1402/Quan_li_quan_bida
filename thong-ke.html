@@ -9,7 +9,7 @@
 
     </head>
 <body>
-    
+    <!-- header -->
     <div class="main-header">
         <div class="logo">
             <img src="assets/ball.png" alt="lỗi">
@@ -20,7 +20,12 @@
             <a href="login/index.html">Đăng xuất</a>
         </div>
     </div>
+    <!-- end header -->
+
+
+<!-- phần menu và nội dung -->
     <div class="main-container">
+        <!-- menu -->
         <div class="main-menu">
             <ul>
                 <li><a href="trang-chu.html">Trang Chủ</a></li>
@@ -30,82 +35,94 @@
                 <li><a href="nhan-vien.html">Nhân viên</a></li>
             </ul>
         </div>
-
+        <!-- content -->
          <div class="main-content" >
-            <main class="main-tk">
-        <h1 class="title">TỔNG QUAN HỆ THỐNG</h1>
+            <!-- phần danh thu -->
+                <div class="thongke-doanhthu" >
+                      <h2>THỐNG KÊ DOANH THU</h2>
+                    <div class="card-doanhthu">
+                      
+                        <div class="card" >
+                            <h3>DOANH THU HÔM NAY</h3>
+                            <p class="money">5.500.000 VND</p>
+                        </div>
+                        <div class="card">
+                            <h3>BIỂU ĐỒ DOANH THU TUẦN</h3>
+                            <canvas id="chart"></canvas>
+                        </div>
+                        </div>
+                </div>
+            <!-- ========================================== -->
+            <!-- phần thống kê giờ chơi -->
+                <div class="thongke-giochoi-card">
+                    <h2>THỐNG KÊ GIỜ CHƠI</h2>
+                        <div class="card-banchoi">
+                            <div class="table-selection-area">
+                                <label for="select-pool" class="label-style">🎱 Bàn Pool</label>
+                                <select id="select-pool" name="select-pool"></select>
+                                <div id="time-pool" class="result-display-card">Chọn bàn để xem giờ chơi hiện tại...</div>
+                            </div>
+                            
+                            <div class="table-selection-area">
+                                <label for="select-snooker" class="label-style">🔶 Bàn Snooker</label>
+                                <select id="select-snooker" name="select-snooker"></select>
+                                <div id="time-snooker" class="result-display-card">Chọn bàn để xem giờ chơi hiện tại...</div>
+                            </div>
+                            
+                            <div class="table-selection-area">
+                                <label for="select-libre" class="label-style">🔵 Bàn Libre</label>
+                                <select id="select-libre" name="select-libre"></select>
+                                <div id="time-libre" class="result-display-card">Chọn bàn để xem giờ chơi hiện tại...</div>
+                            </div>
+                        </div>
+                </div>  
+                <!-- ==============thong ke menu============================ -->
+                 <div class="thongke-menu">
+                    <h2>THỐNG KÊ MENU (Nhân viên tự thống kê thủ công)</h2>
+                    <div class="menu-card">
+                            <div class="monan">
+                                <h3>ĐỒ ĂN<span class="edit-note">(Chỉnh sửa trực tiếp)</span></h3>
+                                <table id="food-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 5%;">STT</th>
+                                            <th style="width: 35%;">Tên Món</th>
+                                            <th style="width: 20%;">Số Lượng</th>
+                                            <th style="width: 20%;">Giá (VNĐ)</th>
+                                            <th style="width: 10%;">TỔNG</th>
+                                            <th style="width: 10%;">Xóa</th> </tr>
+                                    </thead>
+                                    <tbody id="food-tbody">
+                                        </tbody>
+                                </table>
+                                <button id="add-food-row" class="add-row-button">➕ Thêm Món Ăn Mới</button>
+                            </div>
 
-        <div class="grid">
-          <div class="card">
-            <h3>TRẠNG THÁI HOẠT ĐỘNG</h3>
-            <p class="big">Bàn đang chơi: <span>8/15</span></p>
-            <input type="date" />
-          </div>
-          <div class="card">
-            <h3>DOANH THU HÔM NAY</h3>
-            <p class="money">5.500.000 VND</p>
-          </div>
+                            <div class="monuoc">
+                                <h3>ĐỒ UỐNG<span class="edit-note">(Chỉnh sửa trực tiếp)</span></h3>
+                                <table id="drink-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 5%;">STT</th>
+                                            <th style="width: 35%;">Tên Món</th>
+                                            <th style="width: 20%;">Số Lượng</th>
+                                            <th style="width: 20%;">Giá (VNĐ)</th>
+                                            <th style="width: 10%;">TỔNG</th>
+                                            <th style="width: 10%;">Xóa</th> </tr>
+                                    </thead>
+                                    <tbody id="drink-tbody">
+                                        </tbody>
+                                </table>
+                                <button id="add-drink-row" class="add-row-button">➕ Thêm Đồ Uống Mới</button>
+                            </div>
+                    </div>
 
-          <div class="card">
-            <h3>BẢNG ĐIỀU KHIỂN BÀN</h3>
-            <div class="table-grid">
-              <div class="cell a">A</div>
-              <div class="cell">4</div>
-              <div class="cell">2</div>
-              <div class="cell">A</div>
-              <div class="cell a">A</div>
-              <div class="cell">8</div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>BIỂU ĐỒ DOANH THU TUẦN</h3>
-            <canvas id="chart"></canvas>
-          </div>
+                     <button id="save-menu-data" class="save-button">💾 Lưu Dữ Liệu Đã Chỉnh Sửa</button>
+                </div>
+                <!-- ============menu================================== -->
         </div>
-      </main>
     </div>
-        </div>
-    </div>
-
-    <footer class="app-footer">
-    <div class="footer-container">
-        <div class="footer-col logo-col">
-            <h3>Billiards  <span class="highlight">Management</span> System</h3>
-            <p>
-                Địa chỉ: 123 Đường Hồ Đắc Di, Hà Nội<br>
-                Điện thoại: (024) 1234 5678<br>
-                Email: contact@galaxybida.vn
-            </p>
-        </div>
-
-        <div class="footer-col links-col">
-            <h4>Liên Kết Nhanh</h4>
-            <ul>
-                <li><a href="trang-chu.html">Dashboard (Tổng quan)</a></li>
-                <li><a href="ban-choi.html">Quản Lý Bàn</a></li>
-                <li><a href="thong-ke.html">Báo Cáo Thống Kê</a></li>
-                <li><a href="nhan-vien.html">Quản Lý Nhân Viên</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col support-col">
-            <h4>Hỗ Trợ</h4>
-            <ul>
-                <li><a href="#">Chính sách bảo mật</a></li>
-                <li><a href="#">Điều khoản sử dụng</a></li>
-                <li><a href="#">Hướng dẫn sử dụng</a></li>
-                <li><a href="#">Liên hệ IT Support</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p>&copy; 2025 Billiards Management System. All rights reserved.</p>
-    </div>
-</footer>
-    
-
+<!-- ===================================================================================================================================== -->
 <script src="js/thong-ke.js"></script>
 </body>
 <script src="js/main.js"></script>

@@ -1,6 +1,7 @@
 /* --- Thiết lập chung --- */
 
 body {
+    width: 100%;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -10,16 +11,46 @@ body {
     background-position: center center; 
     color: #ffffff; 
 }
+/* Scrollbar tổng */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track – nền sau */
+::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px #000;
+}
+
+/* Thanh kéo – hiệu ứng neon */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff00cc, #3333ff);
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ff00cc, 0 0 10px #3333ff;
+    transition: 0.3s ease;
+}
+
+/* Hover sáng mạnh hơn */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff33dd, #6666ff);
+    box-shadow: 0 0 15px #ff33dd, 0 0 15px #6666ff;
+}
 
 /* --- Header (Quản Lí Quán BiDa) --- */
 .main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 98%;
     height: 50px;
     background-color: rgba(26, 26, 26, 0.95); 
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #fb44cd; 
+    border-bottom: 2px solid #fb44cd;
+    
 
 }
 .logo{
@@ -58,8 +89,10 @@ body {
 
 /* --- Vùng Chính (Bao gồm Menu và Nội dung) --- */
 .main-container {
+    margin-top: 80px;
     display: flex;
-    min-height: calc(100vh - 64px);
+    min-height:100vh;
+    background-color: #121212;
 }
 
 /* --- Menu (Thanh điều hướng dọc) --- */
@@ -71,6 +104,7 @@ body {
     padding-left: 10px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
+    
 }
 
 .main-menu ul {
@@ -109,7 +143,7 @@ body {
 }
 /* --- Nội dung Chính --- */
 .main-content {
-    width: 85%;
+    flex-grow: 1;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.6); 
     color: #ffffff;

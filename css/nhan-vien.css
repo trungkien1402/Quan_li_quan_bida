@@ -3,26 +3,24 @@
     
 }
 .left {
-    flex: 0 0 300px;
-    max-width: 20%; 
-    background: #212f3d; 
+    width: 20%;
     padding: 20px;
-    color: var(--color-text-light);
-    border-right: 3px solid var(--color-accent-blue);
+    color: #ffff;
+    border-right: 3px solid black;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.6);
 }
 
 .left h2 {
     color: var(--color-accent-green);
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 20px;
 }
 
 input[type="text"] {
     padding: 12px 20px;
     border-radius: 5px; 
-    border: 1px solid #4a637d;
-    background: #4a637d; 
+    border: 1px solid #444;
+    background: #444; 
     color: var(--color-text-light);
     font-size: 16px;
 }
@@ -31,18 +29,23 @@ input[type="text"]::placeholder {
     color: #bdc3c7;
 }
 
-
+.nv-option{
+    margin-top: 15px;
+    padding: 12px 20px;
+    border: 2px solid #444;
+    border-radius: 4px;
+}
 .left h3 {
-    background: var(--color-dark-element); 
+    background: #444; 
     padding: 10px 15px;
     border-radius: 5px;
     margin-top: 10px;
-    color: var(--color-accent-blue); 
-    border-left: 5px solid var(--color-accent-blue); 
+    color: #ffff; 
+    border-left: 5px solid black; 
 }
 
 .left h3:hover {
-    background: #4a637d;
+    background: #444;
 }
 
 .left ul {
@@ -51,8 +54,7 @@ input[type="text"]::placeholder {
     margin-top: 5px;
 }
 .left li {
-    background: #4a637d; 
-    color: var(--color-text-light);
+    color: #ffff;
     padding: 8px 15px;
     border-radius: 3px;
     margin: 6px 0;
@@ -61,29 +63,34 @@ input[type="text"]::placeholder {
 }
 
 .left li:hover {
-    background: var(--color-accent-blue); 
+    background: #444; 
     color: white;
     transform: none;
     box-shadow: 0 1px 5px rgba(52, 152, 219, 0.5);
 }
 
-
+.nv-button{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
 .left button {
-    width: 49%;
+    width: 115px;
     margin-top: 15px;
     padding: 12px;
     border: none;
     border-radius: 5px; 
-    color: var(--color-white);
+    color: #fff;
     font-weight: bold;
     font-size: 16px;
-    box-shadow: none;
-    margin-right: 2%; 
+    
+
 }
 
 
 .left button:first-of-type {
-    background: var(--color-accent-green);
+    background: green;
 }
 .left button:first-of-type:hover {
     background: #27ae60;
@@ -93,7 +100,7 @@ input[type="text"]::placeholder {
 
 #xoaNV, .left button:last-child {
     background: #e74c3c;
-    color: var(--color-white);
+    color: #ffff;
 }
 #xoaNV:hover, .left button:last-child:hover {
     background: #c0392b;
@@ -101,26 +108,25 @@ input[type="text"]::placeholder {
 }
 
 
-.right {
-    width: 60%;
-    flex: 1;
-    background: var(--color-dark-bg);
+.right{
+    width: 80%;
     padding: 20px;
-    color: var(--color-text-light);
+}
+.right h2{
+    text-align: center;
 }
 
 .title {
     font-size: 26px;
-    background: var(--color-dark-element);
+    background: #444;
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 25px;
-    color: var(--color-accent-warning); 
+    color: #ffff; 
     text-shadow: none;
 }
 
-.lich {
-    background: var(--color-dark-element); 
+.lich { 
     border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     overflow-x: auto;
@@ -132,10 +138,10 @@ input[type="text"]::placeholder {
 }
 
 .right th {
-    background: #2c3e50; 
-    color: var(--color-text-light);
+    background: #1B1B1B; 
+    color:#fff;
     padding: 12px 8px;
-    border: 1px solid #4a637d;
+    border: 1px solid #fff;
     font-size: 15px;
 }
 
@@ -144,10 +150,12 @@ input[type="text"]::placeholder {
 }
 
 .right td {
-    color: var(--color-text-light);
-    border: 1px solid #4a637d; 
+    width: 100px;
+    color: #ffff; 
+    text-align: center;
+    border: 1px solid #fff; 
     padding: 12px 8px;
-    background: #34495e; 
+    background: #444; 
 }
 
 .right td:hover {
@@ -156,7 +164,7 @@ input[type="text"]::placeholder {
 
 
 td.checked {
-    color: var(--color-accent-green); 
+    color: green; 
     font-weight: bold;
     font-size: 24px;
     background: #4a637d; 
@@ -164,8 +172,8 @@ td.checked {
 
 td:first-child { 
     font-weight: bold; 
-    color: var(--color-accent-blue);
-    background: #2c3e50; 
+    color: black;
+    background: #444; 
 }
 
 .right button {
@@ -173,22 +181,22 @@ td:first-child {
     margin: 15px 10px;
     padding: 14px;
     border-radius: 5px;
-    color: var(--color-white);
+    color: #ffff;
     font-size: 16px;
     box-shadow: none;
 }
 
 
 .right button:first-of-type {
-    background: var(--color-accent-blue); 
+    background: #121212; 
 }
 .right button:first-of-type:hover {
-    background: #2980b9;
+    background: #444;
 }
 
 
 .right button:last-child {
-    background: #7f8c8d;
+    background: #121212;
 }
 .right button:last-child:hover {
     background: #95a5a6;
@@ -203,7 +211,7 @@ td:first-child {
         flex: 1;
         max-width: 100%;
         border-right: none;
-        border-bottom: 3px solid var(--color-accent-blue);
+        border-bottom: 3px solid #ffff;
     }
 }   
 
@@ -217,13 +225,10 @@ td:first-child {
     margin: 0; 
     vertical-align: middle;
 
- 
-    background-color: var(--color-dark-element);
-    border: 2px solid var(--color-accent-blue);
+    border: 2px solid #fff;
     cursor: pointer;
     
-
-    accent-color: var(--color-accent-green);
+    accent-color: green;
 }
 
 
@@ -232,5 +237,5 @@ td.checked {
     color: inherit;
     font-size: 14px;
     font-weight: normal;
-    background: var(--color-dark-element);
+    background: #444;
 }

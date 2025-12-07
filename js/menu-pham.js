@@ -131,7 +131,7 @@ function openOrderModal(id, name) {
 
 function confirmOrder() {
     const tableType = document.getElementById('orderTableType').value; 
-    const tableNum = document.getElementById('orderTable').value;
+    const tableNum = parseInt(document.getElementById('orderTable').value);
     const quantity = parseInt(document.getElementById('orderQuantity').value);
 
     if (!tableNum || !quantity) {
@@ -148,11 +148,11 @@ function confirmOrder() {
         totalPrice: parseInt(selectedItemForOrder.price) * quantity
     };
     // Tăng số lượng bán ra cho TOP
-const menuItem = menuData.find(i => i.id === selectedItemForOrder.id);
-if (menuItem) {
-    menuItem.sold = (menuItem.sold || 0) + quantity;
-    localStorage.setItem('myMenuData', JSON.stringify(menuData));
-}
+    const menuItem = menuData.find(i => i.id === selectedItemForOrder.id);
+    if (menuItem) {
+        menuItem.sold = (menuItem.sold || 0) + quantity;
+        localStorage.setItem('myMenuData', JSON.stringify(menuData));
+    }
 
     let currentOrders = JSON.parse(localStorage.getItem('billiardOrders')) || {};
 

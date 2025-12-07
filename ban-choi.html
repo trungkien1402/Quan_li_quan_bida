@@ -6,12 +6,12 @@
     <title>Quản Lý Bàn</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/ban-choi.css">
-    </head>
+</head>
 <body>
     
     <div class="main-header">
         <div class="logo">
-            <img src="assets/ball.png" alt="lỗi">
+            <img src="assets/ball.png" alt="Logo">
             <b>BILLIARD MANAGEMENT</b>
         </div>
         <div class="account">
@@ -19,141 +19,71 @@
             <a href="login/index.html">Đăng xuất</a>
         </div>
     </div>
+
     <div class="main-container">
         <div class="main-menu">
             <ul>
                 <li><a href="trang-chu.html">Trang Chủ</a></li>
-                <li><a href="ban-choi.html">Quản Lí bàn chơi</a></li>
+                <li><a href="ban-choi.html" class="active">Quản Lí bàn chơi</a></li>
                 <li><a href="menu-pham.html">Menu</a></li>
                 <li><a href="thong-ke.html">Thống kê</a></li>
                 <li><a href="nhan-vien.html">Nhân viên</a></li>
             </ul>
         </div>
 
-         <div class="main-content" >
+         <div class="main-content">
             <div class="content-wrapper">
                 <div class="main-area">
                     <div class="tabs">
-                    <a href="#" class="tab active" data-target="table-list">Danh sách bàn</a>
-                    <a href="#" class="tab" data-target="booking-schedule">Lịch đặt bàn</a>
+                        <a href="#" class="tab active" data-target="table-list">Danh sách bàn</a>
+                        <a href="#" class="tab" data-target="booking-schedule">Lịch đặt bàn</a>
                     </div>
                     
                     <div id="table-list" class="tab-content active">
                         
                         <h3 class="table-group-title">BÀN LIBRE</h3>
                         <div id="libreContainer" class="table-container">
-                        
-                        <div class="table-box trong" data-loai="LIBRE" data-gia="50.000/h">
-                            <div class="table-header">
-                            <h3>Bàn 1</h3>
-                            <button class="btn-xoa">❌</button>
+                            <div class="table-box trong" data-loai="LIBRE" data-gia="50.000/h">
+                                <div class="table-header">
+                                    <h3>Bàn 1</h3>
+                                    <button class="btn-xoa">❌</button>
+                                </div>
+                                <p class="table-info">50.000 VNĐ / GIỜ</p>
+                                <button class="btn btn-mo">Mở bàn</button>
+                                <button class="btn btn-tinh" style="display:none">Tính tiền</button>
+                                <div class="timer">00:00:00</div>
                             </div>
-                            <p class="table-info">50.000 VNĐ / GIỜ</p>
-                            <button class="btn btn-mo">Mở bàn</button>
-                            <div class="timer">00:00:00</div>
-                            <button class="btn btn-tinh">Tính tiền</button>
+                            <div class="add-box">+</div>
                         </div>
 
-                        <div class="table-box trong" data-loai="LIBRE" data-gia="50.000/h">
-                            <div class="table-header">
-                            <h3>Bàn 2</h3>
-                            <button class="btn-xoa">❌</button>
+                        <h3 class="table-group-title">BÀN POOL</h3>
+                        <div id="Container" class="table-container">
+                            <div class="table-box trong" data-loai="POOL" data-gia="60.000/h">
+                                <div class="table-header">
+                                    <h3>Bàn 1</h3>
+                                    <button class="btn-xoa">❌</button>
+                                </div>
+                                <p class="table-info">60.000 VNĐ / GIỜ</p>
+                                <button class="btn btn-mo">Mở bàn</button>
+                                <button class="btn btn-tinh" style="display:none">Tính tiền</button>
+                                <div class="timer">00:00:00</div>
                             </div>
-                            <p class="table-info">50.000 VNĐ / GIỜ</p>
-                            <button class="btn btn-mo">Mở bàn</button>
-                            <div class="timer">00:00:00</div>
-                            <button class="btn btn-tinh">Tính tiền</button>
-                        </div>
-                        <div class="table-box trong" data-loai="LIBRE" data-gia="50.000/h">
-                            <div class="table-header">
-                            <h3>Bàn 3</h3>
-                            <button class="btn-xoa">❌</button>
-                            </div>
-                            <p class="table-info">50.000 VNĐ / GIỜ</p>
-                            <button class="btn btn-mo">Mở bàn</button>
-                            <div class="timer">00:00:00</div>
-                            <button class="btn btn-tinh">Tính tiền</button>
-                        </div>
-                        <div class="table-box trong" data-loai="LIBRE" data-gia="50.000/h">
-                            <div class="table-header">
-                            <h3>Bàn 4</h3>
-                            <button class="btn-xoa">❌</button>
-                            </div>
-                            <p class="table-info">50.000 VNĐ / GIỜ</p>
-                            <button class="btn btn-mo">Mở bàn</button>
-                            <div class="timer">00:00:00</div>
-                            <button class="btn btn-tinh">Tính tiền</button>
-                        </div>
-                        <div class="table-box trong" data-loai="LIBRE" data-gia="50.000/h">
-                            <div class="table-header">
-                            <h3>Bàn 5</h3>
-                            <button class="btn-xoa">❌</button>
-                            </div>
-                            <p class="table-info">50.000 VNĐ / GIỜ</p>
-                            <button class="btn btn-mo">Mở bàn</button>
-                            <div class="timer">00:00:00</div>
-                            <button class="btn btn-tinh">Tính tiền</button>
-                        </div>
-                        
-                        <div class="add-box">+</div>
+                            <div class="add-box">+</div>
                         </div>
 
-                        <h3 class="table-group-title">BÀN LỖ</h3>
-                        <div id="loContainer" class="table-container">
-
-                        <div class="table-box trong" data-loai="LỖ" data-gia="60.000/h">
-                            <div class="table-header">
-                            <h3>Bàn 1</h3>
-                            <button class="btn-xoa">❌</button>
+                        <h3 class="table-group-title">BÀN SNOOKER</h3>
+                        <div id="snookerContainer" class="table-container">
+                            <div class="table-box trong" data-loai="SNOOKER" data-gia="100.000/h">
+                                <div class="table-header">
+                                    <h3>Bàn 1</h3>
+                                    <button class="btn-xoa">❌</button>
+                                </div>
+                                <p class="table-info">100.000 VNĐ / GIỜ</p>
+                                <button class="btn btn-mo">Mở bàn</button>
+                                <button class="btn btn-tinh" style="display:none">Tính tiền</button>
+                                <div class="timer">00:00:00</div>
                             </div>
-                            <p class="table-info">60.000 VNĐ / GIỜ</p>
-                            <button class="btn btn-mo">Mở bàn</button>
-                            <div class="timer">00:00:00</div>
-                            <button class="btn btn-tinh">Tính tiền</button>
-                        </div>
-                        
-                        <div class="table-box trong" data-loai="LỖ" data-gia="60.000/h">
-                            <div class="table-header">
-                            <h3>Bàn 2</h3>
-                            <button class="btn-xoa">❌</button>
-                            </div>
-                            <p class="table-info">60.000 VNĐ / GIỜ</p>
-                            <button class="btn btn-mo">Mở bàn</button>
-                            <div class="timer">00:00:00</div>
-                            <button class="btn btn-tinh">Tính tiền</button>
-                        </div>
-                        <div class="table-box trong" data-loai="LỖ" data-gia="60.000/h">
-                            <div class="table-header">
-                            <h3>Bàn 3</h3>
-                            <button class="btn-xoa">❌</button>
-                            </div>
-                            <p class="table-info">60.000 VNĐ / GIỜ</p>
-                            <button class="btn btn-mo">Mở bàn</button>
-                            <div class="timer">00:00:00</div>
-                            <button class="btn btn-tinh">Tính tiền</button>
-                        </div>
-                        <div class="table-box trong" data-loai="LỖ" data-gia="60.000/h">
-                            <div class="table-header">
-                            <h3>Bàn 4</h3>
-                            <button class="btn-xoa">❌</button>
-                            </div>
-                            <p class="table-info">60.000 VNĐ / GIỜ</p>
-                            <button class="btn btn-mo">Mở bàn</button>
-                            <div class="timer">00:00:00</div>
-                            <button class="btn btn-tinh">Tính tiền</button>
-                        </div>
-                        <div class="table-box trong" data-loai="LỖ" data-gia="60.000/h">
-                            <div class="table-header">
-                            <h3>Bàn 5</h3>
-                            <button class="btn-xoa">❌</button>
-                            </div>
-                            <p class="table-info">60.000 VNĐ / GIỜ</p>
-                            <button class="btn btn-mo">Mở bàn</button>
-                            <div class="timer">00:00:00</div>
-                            <button class="btn btn-tinh">Tính tiền</button>
-                        </div>
-
-                        <div class="add-box">+</div>
+                            <div class="add-box">+</div>
                         </div>
                         
                     </div>
@@ -168,76 +98,79 @@
                     
                 </div>
                 
-                    <div id="billContainer" class="bill-box">
-    <h3 style="border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 15px; color: white;">
-        Hóa đơn Bàn ...
-    </h3>
+                <div id="billContainer" class="bill-box">
+                    <h3 style="border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 15px; color: white;">
+                        Hóa đơn Bàn ...
+                    </h3>
 
-    <div class="bill-info" style="color: #ccc; font-size: 0.9em; line-height: 2;">
-        <p>Loại bàn: <span id="billLoai" style="float: right; font-weight: bold; color: white;">...</span></p>
-        <p>Tiền bàn: <span id="billGia" style="float: right;">...</span></p>
-        <p>Giờ bắt đầu: <span id="billStart" style="float: right;">...</span></p>
-        <p>Giờ kết thúc: <span id="billEnd" style="float: right;">...</span></p>
-        <div style="border-top: 1px dashed #555; margin-top: 5px; padding-top: 5px;">
-            Tổng giờ chơi: <span id="billTotalTime" style="float: right; font-weight: bold; color: #00e0ff; font-size: 1.1em;">...</span>
-        </div>
-    </div>
-    
-    <div class="bill-services" style="margin-top: 15px; background: #222; padding: 10px; border-radius: 5px;">
-        <p style="margin-bottom: 5px; color: #aaa; font-size: 0.8em; text-transform: uppercase;">Dịch vụ / Món ăn:</p>
-        <div id="billListItems" style="padding-left: 5px; font-size: 0.9em; color: white; min-height: 20px;">
-            (Chưa gọi món)
-        </div>
-        <p style="text-align: right; margin-top: 5px; font-size: 0.9em; border-top: 1px solid #444; padding-top: 5px; color: #aaa;">
-            Tiền món: <span id="billServiceTotal">0</span> VNĐ
-        </p>
-    </div>
+                    <div class="bill-info" style="color: #ccc; font-size: 0.9em; line-height: 2;">
+                        <p>Loại bàn: <span id="billLoai" style="float: right; font-weight: bold; color: white;">...</span></p>
+                        <p>Tiền bàn: <span id="billGia" style="float: right;">...</span></p>
+                        <p>Giờ bắt đầu: <span id="billStart" style="float: right;">...</span></p>
+                        <p>Giờ kết thúc: <span id="billEnd" style="float: right;">...</span></p>
+                        <div style="border-top: 1px dashed #555; margin-top: 5px; padding-top: 5px;">
+                            Tổng giờ chơi: <span id="billTotalTime" style="float: right; font-weight: bold; color: #00e0ff; font-size: 1.1em;">...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bill-services" style="margin-top: 15px; background: #222; padding: 10px; border-radius: 5px;">
+                        <p style="margin-bottom: 5px; color: #aaa; font-size: 0.8em; text-transform: uppercase;">Dịch vụ / Món ăn:</p>
+                        <div id="billListItems" style="padding-left: 5px; font-size: 0.9em; color: white; min-height: 20px;">
+                            (Chưa gọi món)
+                        </div>
+                        <p style="text-align: right; margin-top: 5px; font-size: 0.9em; border-top: 1px solid #444; padding-top: 5px; color: #aaa;">
+                            Tiền món: <span id="billServiceTotal">0</span> VNĐ
+                        </p>
+                    </div>
 
-    <div style="margin-top: 20px; text-align: right; border: 1px ;">
-        <span style="font-size: 1em;">TỔNG THANH TOÁN</span><br>
-        <span id="billTotal" style="font-size: 1.8em; font-weight: bold; color: #ffffff;">0 VNĐ</span>
-    </div>
-</div>
-
-            <div id="bookingModal" class="modal hidden">
-                <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h3>Tạo Lịch Đặt Bàn Mới</h3>
-                
-                <div class="form-group">
-                    <label for="modal-name">Tên Khách Hàng:</label>
-                    <input type="text" id="modal-name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="modal-phone">Số Điện Thoại:</label>
-                    <input type="text" id="modal-phone" required>
+                    <div style="margin-top: 20px; text-align: right;">
+                        <span style="font-size: 1em;">TỔNG THANH TOÁN</span><br>
+                        <span id="billTotal" style="font-size: 1.8em; font-weight: bold; color: #ffffff;">0 VNĐ</span>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="modal-time">Giờ Đặt:</label>
-                    <input type="time" id="modal-time" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="modal-table-type">Loại Bàn:</label>
-                    <select id="modal-table-type" required>
-                        <option value="Libre">Libre</option>
-                        <option value="Lỗ">Lỗ</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="modal-note">Lưu ý (Lơ, cơ, nước...):</label>
-                    <textarea id="modal-note" rows="3"></textarea>
-                </div>
-                
-                <button id="saveBookingBtn" class="btn btn-mo">Lưu Lịch Đặt</button>
-                </div>
+            </div>
         </div>
     </div>
 
+    <div id="bookingModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Tạo Lịch Đặt Bàn Mới</h3>
+            
+            <div class="form-group">
+                <label for="modal-name">Tên Khách Hàng:</label>
+                <input type="text" id="modal-name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="modal-phone">Số Điện Thoại:</label>
+                <input type="text" id="modal-phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="modal-time">Giờ Đặt:</label>
+                <input type="time" id="modal-time" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="modal-table-type">Loại Bàn:</label>
+                <select id="modal-table-type" required>
+                    <option value="Libre">Libre</option>
+                    <option value="Pool">Pool</option>
+                    <option value="Snooker">Snooker</option> </select>
+            </div>
+
+            <div class="form-group">
+                <label for="modal-note">Lưu ý (Lơ, cơ, nước...):</label>
+                <textarea id="modal-note" rows="3"></textarea>
+            </div>
+            
+            <button id="saveBookingBtn" class="btn btn-mo">Lưu Lịch Đặt</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/ban-choi.js"></script>
 </body>
-<script src="js/main.js"></script>
-<script src="js/ban-choi.js"></script>
 </html>

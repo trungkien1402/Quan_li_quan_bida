@@ -7,7 +7,7 @@
     padding: 20px;
     color: #ffff;
     border-right: 3px solid black;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.6);
+    box-shadow: 2px 0 10px rgba(102, 87, 87, 0.56);
 }
 
 .left h2 {
@@ -71,12 +71,7 @@ input[type="text"]::placeholder {
     box-shadow: 0 1px 5px rgba(52, 152, 219, 0.5);
 }
 
-.nv-button{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
+
 .left button {
     width: 115px;
     margin-top: 15px;
@@ -87,28 +82,52 @@ input[type="text"]::placeholder {
     font-weight: bold;
     font-size: 16px;
     
-
 }
 
 
 .left button:first-of-type {
-    background: green;
+    background: transparent;
+    border: 1px solid #0d5e12;
+    color: #0d5e12;
+    padding: 10px;
+    width: 48%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 10px;
 }
 .left button:first-of-type:hover {
     cursor: pointer;
     background: #27ae60;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--primary-color);
+    
 }
 
 
 #xoaNV, .left button:last-child {
-    background: #e74c3c;
-    color: #ffff;
+    background: transparent;
+    border: 1px solid #901515;
+    color: #901515;
+    padding: 10px;
+    width: 48%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 10px;
 }
 #xoaNV:hover, .left button:last-child:hover {
-    background: #c0392b;
-    transform: translateY(-1px);
     cursor: pointer;
+    background: #9b3131;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--primary-color);
+    
 }
 
 
@@ -290,3 +309,4 @@ td.checked {
     text-align: center;
     width: 10%;
 }
+

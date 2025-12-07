@@ -76,23 +76,31 @@
         </div>
     </div>
 
-    <div id="orderModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('orderModal')">&times;</span>
-            <div class="modal-header">Xác Nhận Order</div>
-            <p id="orderItemName" style="text-align: center; margin-bottom: 15px; color: #ccc; font-style: italic;"></p>
-            
-            <div class="form-group">
-                <label>Số bàn:</label>
-                <input type="number" id="orderTable" placeholder="Nhập số bàn">
-            </div>
-            <div class="form-group">
-                <label>Số lượng:</label>
-                <input type="number" id="orderQuantity" value="1" min="1">
-            </div>
-            <button class="btn-submit" onclick="confirmOrder()">Xác Nhận Order</button>
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('orderModal')">&times;</span>
+        <div class="modal-header">Xác Nhận Order</div>
+        <p id="orderItemName" style="text-align: center; margin-bottom: 15px; color: #ccc; font-style: italic;"></p>
+        
+        <div class="form-group">
+            <label>Loại bàn:</label>
+            <select id="orderTableType">
+                <option value="LIBRE">Bàn Libre</option>
+                <option value="LỖ">Bàn Snooker</option>
+                <option value="LỖ">Bàn Pool</option>
+            </select>
         </div>
+        <div class="form-group">
+            <label>Số bàn:</label>
+            <input type="number" id="orderTable" placeholder="Nhập số bàn (VD: 1)">
+        </div>
+        <div class="form-group">
+            <label>Số lượng:</label>
+            <input type="number" id="orderQuantity" value="1" min="1">
+        </div>
+        <button class="btn-submit" onclick="confirmOrder()">Xác Nhận Order</button>
     </div>
+</div>
 
     <div id="toast">
         <div id="toast-message">Nội dung thông báo</div>

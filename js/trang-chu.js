@@ -1,32 +1,48 @@
-// Bật / tắt chế độ chỉnh sửa
+// ===============================
+// BẬT / TẮT CHẾ ĐỘ CHỈNH SỬA
+// ===============================
 function toggleEdit(tableId, btn) {
     const table = document.getElementById(tableId);
-    const isEditing = btn.classList.contains("save");
+    const isEditing = table.classList.toggle("editing");
 
-    if (!isEditing) {
-        btn.classList.add("save");
-        btn.textContent = "Lưu";
+    btn.textContent = isEditing ? "Lưu" : "Cập Nhật";
 
-        [...table.querySelectorAll("td:not(:last-child)")].forEach(td => {
-            td.setAttribute("contenteditable", "true");
-        });
-
+    if (isEditing) {
+        makeEditable(table);
     } else {
-        btn.classList.remove("save");
-        btn.textContent = "Cập Nhật";
-
-        [...table.querySelectorAll("td")].forEach(td => {
-            td.removeAttribute("contenteditable");
-        });
-
         saveTable(tableId);
+        removeEditable(table);
     }
 }
 
+// Tạo input để chỉnh sửa
+function makeEditable(table) {
+    for (let i = 1; i < table.rows.length; i++) {
+        for (let j = 0; j < table.rows[i].cells.length - 1; j++) {
+            const td = table.rows[i].cells[j];
+            const value = td.textContent.trim();
+            td.innerHTML = `<input class="cell-edit" value="${value}">`;
+        }
+    }
+}
 
-// Lưu dữ liệu bảng vào localStorage
+// Chuyển input → text sau khi lưu
+function removeEditable(table) {
+    for (let i = 1; i < table.rows.length; i++) {
+        for (let j = 0; j < table.rows[i].cells.length - 1; j++) {
+            const td = table.rows[i].cells[j];
+            const inp = td.querySelector("input");
+            if (inp) td.textContent = inp.value;
+        }
+    }
+}
+
+// ===============================
+// LƯU DỮ LIỆU BẢNG VÀO LOCALSTORAGE
+// ===============================
 function saveTable(tableId) {
     const table = document.getElementById(tableId);
+
     const rows = [...table.rows].slice(1).map(r => {
         return {
             name: r.cells[0].innerText,
@@ -38,8 +54,9 @@ function saveTable(tableId) {
     localStorage.setItem(tableId, JSON.stringify(rows));
 }
 
-
-// Tải dữ liệu khi reload
+// ===============================
+// LOAD BẢNG TỪ LOCALSTORAGE
+// ===============================
 function loadTable(tableId) {
     const data = JSON.parse(localStorage.getItem(tableId));
     if (!data) return;
@@ -60,88 +77,20 @@ function loadTable(tableId) {
             <td>${item.name}</td>
             <td>${item.qty}</td>
             <td>${item.unit}</td>
-            <td><button class="btn-delete" onclick="deleteRow(this)">X</button></td>
+            <td><button class="btn-delete" onclick="deleteRow('${tableId}', this)">X</button></td>
         `;
     });
 }
 
-
-// Thêm dòng mới
-function addRow(tableId) {
-    const table = document.getElementById(tableId);
-    const row = table.insertRow(-1);
-
-    row.innerHTML = `
-        <td contenteditable="true">Tên</td>
-        <td contenteditable="true">0</td>
-        <td contenteditable="true">Đơn Vị</td>
-        <td><button class="btn-delete" onclick="deleteRow(this)">X</button></td>
-    `;
-}
-
-
-// Xóa 1 dòng
-function deleteRow(btn) {
-    const row = btn.parentElement.parentElement;
-    const tableId = row.parentElement.id;
-    row.remove();
-    saveTable(tableId);
-}
-
-
-// Load khi mở trang
-window.onload = () => {
-    loadTable("table-kho");
-    loadTable("table-fastfood");
-};
-// Bật / Tắt chế độ chỉnh sửa
-function toggleEdit(tableId, btn) {
-    const table = document.getElementById(tableId);
-    const editing = table.classList.toggle("editing");
-    btn.textContent = editing ? "Lưu" : "Cập Nhật";
-
-    if (!editing) {
-        saveTable(table);
-    } else {
-        makeEditable(table);
-    }
-}
-
-// biến ô thành input để sửa
-function makeEditable(table) {
-    for (let i = 1; i < table.rows.length; i++) {
-        for (let j = 0; j < table.rows[i].cells.length; j++) {
-            const td = table.rows[i].cells[j];
-            const value = td.textContent.trim();
-            td.innerHTML = `<input class="cell-edit" value="${value}">`;
-        }
-    }
-}
-
-// lưu input -> text
-function saveTable(table) {
-    for (let i = 1; i < table.rows.length; i++) {
-        for (let j = 0; j < table.rows[i].cells.length; j++) {
-            const inp = table.rows[i].cells[j].querySelector("input");
-            if (inp) {
-                table.rows[i].cells[j].textContent = inp.value;
-            }
-        }
-    }
-}
-
-
-
-// -------------------------
-// THÊM HÀNG
-// -------------------------
-
+// ===============================
+// THÊM DÒNG MỚI
+// ===============================
 function addRow(tableId) {
     const name = document.getElementById('inputName').value.trim();
-    const price = document.getElementById('orderQuantity').value.trim();
+    const qty = document.getElementById('orderQuantity').value.trim();
     const unit = document.getElementById('inputPrice').value.trim();
 
-    if (!name || !price || !unit) {
+    if (!name || !qty || !unit) {
         alert("Vui lòng nhập đủ thông tin!");
         return;
     }
@@ -152,21 +101,70 @@ function addRow(tableId) {
 
     row.innerHTML = `
         <td>${name}</td>
-        <td>${price}</td>
+        <td>${qty}</td>
         <td>${unit}</td>
-        <td><button class="btn-delete" onclick="deleteRow(this)">Xóa</button></td>
+        <td><button class="btn-delete" onclick="deleteRow('${tableId}', this)">X</button></td>
     `;
 
-    // reset form y hệt cách bạn đang làm ở trang menu
+    // Reset input
     document.getElementById('inputName').value = '';
-    document.getElementById('inputPrice').value = '';
     document.getElementById('orderQuantity').value = '';
+    document.getElementById('inputPrice').value = '';
+
+    saveTable(tableId);
 }
 
-// -------------------------
-// XÓA HÀNG
-// -------------------------
-function deleteRow(btn) {
+// ===============================
+// XÓA 1 DÒNG
+// ===============================
+function deleteRow(tableId, btn) {
     const row = btn.parentElement.parentElement;
     row.remove();
+    saveTable(tableId);
 }
+
+// ===============================
+// LOAD 2 BẢNG (KHO + FASTFOOD)
+// ===============================
+window.onload = () => {
+    loadTable("table-kho");
+    loadTable("table-fastfood");
+};
+
+// ===============================
+// LOAD TOP FOOD & DRINK
+// ===============================
+function loadTop() {
+
+    // LẤY ĐÚNG KEY MENU CỦA BẠN
+    const data = JSON.parse(localStorage.getItem("myMenuData")) || [];
+
+    const topFoodTable = document.getElementById("table-monan");
+    const topDrinkTable = document.getElementById("table-nuoc");
+
+    // Xóa toàn bộ dòng cũ
+    topFoodTable.querySelectorAll("tr:not(:first-child)").forEach(tr => tr.remove());
+    topDrinkTable.querySelectorAll("tr:not(:first-child)").forEach(tr => tr.remove());
+
+    // Sắp xếp giảm dần theo số bán (sold)
+    const sorted = [...data].sort((a, b) => (b.sold || 0) - (a.sold || 0));
+
+    // Render từng món
+    sorted.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>${item.sold || 0}</td>
+        `;
+
+        if (item.category === "drink") {
+            topDrinkTable.appendChild(row);
+        }
+        else if (item.category === "food") {
+            topFoodTable.appendChild(row);
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", loadTop);
+

@@ -93,6 +93,7 @@ body {
     display: flex;
     min-height:100vh;
     background-color: #121212;
+    border-bottom: 3px solid #fb44cd;
 }
 
 /* --- Menu (Thanh điều hướng dọc) --- */
@@ -109,8 +110,10 @@ body {
 
 .main-menu ul {
     list-style: none;
-    padding: 0;
+    padding: 20px 4px 60px 4px;
     margin: 0;
+    border-radius: 10px;
+    box-shadow: #000 0px 0px 10px;
 }
 .main-menu li {
     margin-bottom: 10px;

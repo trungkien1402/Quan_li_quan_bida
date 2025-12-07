@@ -126,7 +126,7 @@
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
     padding: 8px;
-    width: 100%;
+    width: 50%;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
@@ -302,7 +302,7 @@
     border: 1px solid #d20042;
     color: #d20042;
     padding: 8px;
-    width: 100%;
+    width: 50%;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;

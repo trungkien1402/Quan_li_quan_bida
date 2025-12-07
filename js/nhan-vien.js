@@ -201,7 +201,7 @@ function themNhanVien() {
 function xoaNhanVien() {
     Xoa = !Xoa;
     const xoaBtn = document.getElementById("xoaNV");
-    xoaBtn.textContent = Xoa ? "Click tên để xóa" : "🗑️ Xóa";
+    xoaBtn.textContent = Xoa ? "Click tên để xóa" : " Xóa";
     const leftPanel = document.querySelector(".left"); // Đã thay đổi từ .left sang .capnhat-nhanvien .left
     if (leftPanel) {
         if (Xoa) {

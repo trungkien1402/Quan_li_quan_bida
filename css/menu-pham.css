@@ -133,6 +133,7 @@
     text-transform: uppercase;
     font-size: 13px;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .btn-order:hover {
@@ -188,7 +189,18 @@
     font-size: 14px;
 }
 
-.form-group input, .form-group select {
+.form-group input {
+    width: 94%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: #252525;
+    color: white;
+    outline: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+.form-group select{
     width: 100%;
     padding: 12px;
     border-radius: 5px;
@@ -283,4 +295,24 @@
     font-style: italic;
     border: 2px dashed #333;
     border-radius: 10px;
+}
+
+.btn-delete {
+    background: transparent;
+    border: 1px solid #d20042;
+    color: #d20042;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn-delete:hover {
+    box-shadow: 0 0 15px var(--primary-color);
+    transform: translateY(-2px);
 }

@@ -1,14 +1,21 @@
-// Dữ liệu mẫu (có thể để trống [])
-let menuData = [];
+// --- 1. KHỞI TẠO DỮ LIỆU TỪ STORAGE ---
+// Kiểm tra xem máy đã lưu dữ liệu tên là 'myRestaurantMenu' chưa
+const storedData = localStorage.getItem('myRestaurantMenu');
+
+// Nếu có rồi thì dùng (parse từ JSON sang mảng), nếu chưa thì dùng mảng rỗng []
+let menuData = storedData ? JSON.parse(storedData) : [];
 
 let currentTab = 'food'; 
 let selectedItemForOrder = null;
 
-// Chuyển Tab
+// Hàm phụ trợ để lưu dữ liệu (Dùng lại nhiều lần)
+function saveToStorage() {
+    localStorage.setItem('myRestaurantMenu', JSON.stringify(menuData));
+}
+
+// Chuyển Tab (Giữ nguyên)
 function switchTab(tab) {
     currentTab = tab;
-    
-    // Cập nhật UI nút tab
     const btns = document.querySelectorAll('.tab-btn');
     if (tab === 'food') {
         btns[0].classList.add('active');
@@ -17,11 +24,10 @@ function switchTab(tab) {
         btns[0].classList.remove('active');
         btns[1].classList.add('active');
     }
-    
     renderMenu();
 }
 
-// Render danh sách món
+// Render danh sách món (Giữ nguyên)
 function renderMenu() {
     const container = document.getElementById('menuContainer');
     container.innerHTML = '';
@@ -39,20 +45,25 @@ function renderMenu() {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-            <img src="${imgSrc}" alt="${item.name}" class="card-img" onerror="this.src='https://via.placeholder.com/300x200?text=Error'">
-            <div class="card-body">
-                <div>
-                    <div class="card-title">${item.name}</div>
-                    <div class="card-price">${parseInt(item.price).toLocaleString()} VNĐ</div>
-                </div>
-                <button class="btn-order" onclick="openOrderModal('${item.id}', '${item.name}')">Đặt Món</button>
+    <img src="${imgSrc}" alt="${item.name}" class="card-img" onerror="this.src='https://via.placeholder.com/300x200?text=Error'">
+    <div class="card-body">
+        <div>
+            <div class="card-title">${item.name}</div>
+            <div class="card-price">${parseInt(item.price).toLocaleString()} VNĐ</div>
+        </div>
+        
+        <button class="btn-order" onclick="openOrderModal('${item.id}', '${item.name}')">Đặt Món</button>
+        
+        <button class="btn-delete" onclick="deleteItem('${item.id}')">
+            Xóa món
+        </button> 
             </div>
         `;
         container.appendChild(card);
     });
 }
 
-// --- THÊM MÓN ---
+// --- THÊM MÓN (CẬP NHẬT) ---
 function openAddModal() {
     document.getElementById('addModal').style.display = 'flex';
 }
@@ -78,6 +89,9 @@ function addItem() {
 
     menuData.push(newItem);
     
+    // --- LƯU LẠI VÀO STORAGE NGAY LẬP TỨC ---
+    saveToStorage(); 
+    
     // Reset inputs
     document.getElementById('inputName').value = '';
     document.getElementById('inputPrice').value = '';
@@ -85,17 +99,26 @@ function addItem() {
     
     closeModal('addModal');
     
-    // Chuyển sang tab chứa món vừa thêm để hiển thị ngay
     if(category !== currentTab) {
         switchTab(category);
     } else {
         renderMenu();
     }
     
-    showToast(`Đã thêm mới món: ${name}`);
+    showToast(`Đã thêm mới và lưu: ${name}`);
 }
 
-// --- ORDER ---
+// --- TÍNH NĂNG XÓA MÓN (Thêm mới để bạn quản lý dữ liệu đã lưu) ---
+function deleteItem(id) {
+    if(confirm('Bạn có chắc muốn xóa món này không?')) {
+        menuData = menuData.filter(item => item.id !== id);
+        saveToStorage(); // Lưu lại danh sách mới sau khi xóa
+        renderMenu();
+        showToast("Đã xóa món thành công!");
+    }
+}
+
+// --- ORDER (Giữ nguyên) ---
 function openOrderModal(id, name) {
     selectedItemForOrder = { id, name };
     document.getElementById('orderItemName').innerText = `Đang chọn: ${name}`;
@@ -112,19 +135,16 @@ function confirmOrder() {
         return;
     }
 
-    // Câu thông báo
     const msg = `Đã thêm ${quantity} suất [${selectedItemForOrder.name}]<br>vào bàn số ${tableNum}`;
-    
     closeModal('orderModal');
     
-    // Reset inputs
     document.getElementById('orderTable').value = ''; 
     document.getElementById('orderQuantity').value = '1'; 
     
     showToast(msg);
 }
 
-// --- TIỆN ÍCH ---
+// --- TIỆN ÍCH (Giữ nguyên) ---
 function closeModal(modalId) {
     document.getElementById(modalId).style.display = 'none';
 }
@@ -139,10 +159,9 @@ function showToast(message) {
     const toast = document.getElementById("toast");
     const toastMsg = document.getElementById("toast-message");
     
-    toastMsg.innerHTML = message; // Dùng innerHTML để hỗ trợ thẻ <br> xuống dòng
+    toastMsg.innerHTML = message;
     toast.className = "show";
     
-    // Ẩn sau 2.5 giây
     setTimeout(function(){ 
         toast.className = toast.className.replace("show", ""); 
     }, 2500);

@@ -27,10 +27,6 @@
     margin-bottom: 15px;
     text-align: center;
 }
-canvas {
-    margin-top: -40px;
-    max-width: 400px;
-}
 .money {
     font-size: 40px;
     font-weight: bold;

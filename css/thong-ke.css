@@ -7,7 +7,7 @@
 }
 .thongke-doanhthu h2{
     text-align: center;
-    color: #00FCCE;
+    color: #fb44cd;
     margin-bottom: 20px;
     
 }
@@ -20,12 +20,20 @@
     background: #191919;
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid rgba(0, 255, 255, 0.15);
-    box-shadow: 0 0 15px rgba(0,255,255,0.05);
+    border: 3px solid rgba(0, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(0,255,255,0.55);
     width: 50vh;
     height: 25vh;
     margin-bottom: 15px;
     text-align: center;
+}
+.card:hover{
+    background-color: #121212;
+    border: 3px solid #fb44cd;
+    box-shadow: 0 0 15px rgba(221, 55, 247, 0.55);
+    cursor: pointer;
+    color: #fb44cd;
+    transform: translateY(-10px);
 }
 .money {
     font-size: 40px;
@@ -36,6 +44,11 @@
 .card h3 {
     color: #00ffd0;
     font-size: 20px;
+}
+.card:hover h3 {
+    color: #fb44cd;
+    font-size: 20px;
+    font-weight: 800;
 }
 
 .thongke-giochoi-card{

@@ -1,6 +1,6 @@
-.main-content {
+.capnhat-nhanvien {
     display: flex;
-    
+    margin-bottom: 30px;
 }
 .left {
     width: 20%;
@@ -11,7 +11,7 @@
 }
 
 .left h2 {
-    color: var(--color-accent-green);
+    color: #fb44cd;
     font-size: 20px;
     margin-bottom: 20px;
 }
@@ -45,7 +45,9 @@ input[type="text"]::placeholder {
 }
 
 .left h3:hover {
-    background: #444;
+    border: 2px solid #fff;
+    color: #fb44cd;
+    cursor: pointer;
 }
 
 .left ul {
@@ -93,6 +95,7 @@ input[type="text"]::placeholder {
     background: green;
 }
 .left button:first-of-type:hover {
+    cursor: pointer;
     background: #27ae60;
     transform: translateY(-1px);
 }
@@ -105,6 +108,7 @@ input[type="text"]::placeholder {
 #xoaNV:hover, .left button:last-child:hover {
     background: #c0392b;
     transform: translateY(-1px);
+    cursor: pointer;
 }
 
 
@@ -114,16 +118,17 @@ input[type="text"]::placeholder {
 }
 .right h2{
     text-align: center;
+    color: #fb44cd;
 }
 
 .title {
+    text-align: center;
     font-size: 26px;
     background: #444;
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 25px;
     color: #ffff; 
-    text-shadow: none;
 }
 
 .lich { 
@@ -172,7 +177,7 @@ td.checked {
 
 td:first-child { 
     font-weight: bold; 
-    color: black;
+    color: #ffff;
     background: #444; 
 }
 
@@ -191,7 +196,11 @@ td:first-child {
     background: #121212; 
 }
 .right button:first-of-type:hover {
-    background: #444;
+    background: black;
+    color: #fb44cd;
+    cursor: pointer;
+    border: 2px solid #fb44cd;
+    transform: translateY(-4px);
 }
 
 
@@ -199,7 +208,11 @@ td:first-child {
     background: #121212;
 }
 .right button:last-child:hover {
-    background: #95a5a6;
+    background: black;
+    color: #fb44cd;
+    cursor: pointer;
+    border: 2px solid #fb44cd;
+    transform: translateY(-4px);
 }
 
 
@@ -238,4 +251,42 @@ td.checked {
     font-size: 14px;
     font-weight: normal;
     background: #444;
+}
+/* Danh sách nhân viên CSS */
+.danhsach {
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.danhsach h2 {
+    text-align: center;
+    color: #fb44cd;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffff;
+    padding-bottom: 10px;
+}
+
+.danhsach table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.danhsach tbody tr:hover {
+    background-color: #8a948d;
+}
+
+.danhsach tbody td {
+    padding: 10px;
+    border: 1px solid #eee;
+    color: #fff;
+    font-size: 0.9em;
+}
+
+/* Căn giữa cột STT */
+.danhsach tbody td:first-child {
+    text-align: center;
+    width: 10%;
 }

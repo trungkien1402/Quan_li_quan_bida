@@ -1,0 +1,104 @@
+/* Google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --accent: #ff00cc; /* màu bạn yêu cầu */
+  --bg: #0f1115;
+  --card: #121318;
+  --muted: #bfc3cf;
+  --glass: rgba(255,255,255,0.03);
+  --radius: 12px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg, #08090b 0%, #0b0c0f 100%);
+  color: #e8e8ee;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.4;
+}
+
+a{color:var(--accent);text-decoration:none}
+
+/* Header */
+.main-header{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:18px 28px;background:linear-gradient(90deg, rgba(255,0,204,0.06), rgba(255,0,204,0.02));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{width:42px;height:42px;object-fit:contain}
+.logo b{font-size:18px;color:var(--accent);letter-spacing:0.6px}
+
+.account a{margin-left:14px;padding:8px 12px;border-radius:8px;color:var(--accent);font-weight:600}
+.account a:hover{background:var(--glass)}
+
+/* Layout */
+.main-container{display:flex;gap:20px;padding:24px}
+.main-menu{
+  width:220px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-radius:var(--radius);padding:16px;border:1px solid rgba(255,255,255,0.03);
+}
+.main-menu ul{list-style:none}
+.main-menu li{margin-bottom:6px}
+.main-menu a{
+  display:block;padding:10px 12px;border-radius:10px;color:var(--muted);font-weight:600
+}
+.main-menu a:hover, .main-menu a.active{background:linear-gradient(90deg, rgba(255,0,204,0.06), rgba(255,0,204,0.02));color:var(--accent);}
+
+.main-content{flex:1;padding:12px}
+
+.tong-quan{display:flex;gap:14px;margin-bottom:18px}
+.tq-doanhthu, .tq-banchoi, .tq-nhanvien{
+  flex:1;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);
+}
+.tq-doanhthu h3, .tq-banchoi h3, .tq-nhanvien h3{font-size:14px;color:var(--muted);margin-bottom:8px}
+.tq-so{font-size:22px;font-weight:700;color:var(--accent)}
+
+/* Top lists */
+.top{display:flex;gap:14px;margin-bottom:18px}
+.top-nuoc, .top-monan{flex:1;padding:16px;border-radius:12px;background:var(--card);border:1px solid rgba(255,255,255,0.03)}
+.top h2{font-size:16px;margin-bottom:10px;color:var(--muted)}
+
+table{width:100%;border-collapse:collapse;background:transparent}
+table th, table td{padding:10px 12px;text-align:left;border-bottom:1px dashed rgba(255,255,255,0.03)}
+table th{color:var(--muted);font-weight:600;font-size:13px}
+table tr:nth-child(even) td{background:rgba(255,255,255,0.01)}
+
+/* Kho hàng */
+.kho h2{margin-top:6px;margin-bottom:10px;color:var(--muted)}
+
+/* Footer */
+.app-footer{margin-top:28px;padding:20px 24px;background:linear-gradient(180deg, rgba(255,0,204,0.02), transparent);border-top:1px solid rgba(255,255,255,0.03)}
+.footer-container{display:flex;gap:20px;justify-content:space-between}
+.footer-col{flex:1}
+.footer-col h3, .footer-col h4{color:var(--muted);margin-bottom:8px}
+.footer-col p, .footer-col ul{color:#bfc3cf;font-size:13px}
+.footer-col ul{list-style:none;padding-left:0}
+.footer-col ul li{margin-bottom:6px}
+.footer-bottom{text-align:center;margin-top:12px;color:#9da0ab;font-size:13px}
+
+/* Small helpers */
+.btn{display:inline-block;padding:8px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#ff66d9);color:white;font-weight:700;border:none}
+.card{background:var(--card);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+
+/* Responsive */
+@media (max-width:900px){
+  .main-container{flex-direction:column;padding:12px}
+  .main-menu{width:100%;display:flex;overflow-x:auto}
+  .tong-quan{flex-direction:column}
+  .top{flex-direction:column}
+  .footer-container{flex-direction:column}
+}
+
+/* subtle glow on accent elements */
+.glow{
+  box-shadow: 0 6px 18px rgba(255,0,204,0.08);
+}
+
+/* utility for small muted text */
+.muted{color:var(--muted);font-size:13px}

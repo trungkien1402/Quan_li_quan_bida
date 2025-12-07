@@ -1,199 +1,331 @@
 const ids = [
-  "sang2",
-  "sang3",
-  "sang4",
-  "sang5",
-  "sang6",
-  "sang7",
-  "sangCN",
-  "chieu2",
-  "chieu3",
-  "chieu4",
-  "chieu5",
-  "chieu6",
-  "chieu7",
-  "chieuCN",
-  "toi2",
-  "toi3",
-  "toi4",
-  "toi5",
-  "toi6",
-  "toi7",
-  "toiCN",
+    "sang2", "sang3", "sang4", "sang5", "sang6", "sang7", "sangCN",
+    "chieu2", "chieu3", "chieu4", "chieu5", "chieu6", "chieu7", "chieuCN",
+    "toi2", "toi3", "toi4", "toi5", "toi6", "toi7", "toiCN",
 ];
 
+// Cấu trúc dsNV đã thay đổi: lưu đối tượng { ten, sdt }
 let dsNV = JSON.parse(localStorage.getItem("dsNV")) || {
-  ql: [],
-  pv: [],
-  tn: [],
+    ql: [], // Quản lý: [{ ten: "...", sdt: "..." }]
+    pv: [], // Phục vụ: [{ ten: "...", sdt: "..." }]
+    tn: [], // Thu ngân: [{ ten: "...", sdt: "..." }]
 };
 let lichNV = JSON.parse(localStorage.getItem("lichNV")) || {};
 let Xoa = false;
 let nhanVienHienTai = "";
 
+const nhomToChucVu = {
+    ql: "Quản Lý",
+    pv: "Phục Vụ",
+    tn: "Thu Ngân"
+};
+
+/* =======================================================
+    1. CÁC HÀM XỬ LÝ LỊCH VÀ NHÂN VIÊN
+========================================================= */
+
 function taoCheckbox(id, giaTri = "Không") {
-  const td = document.getElementById(id);
-  const isChecked = giaTri === "Có" ? "checked" : "";
-  td.innerHTML = `<input type="checkbox" id="check-${id}" ${isChecked}>`;
-  td.classList.remove("checked");
-  td.style.fontSize = "14px";
-  td.style.fontWeight = "normal";
+    const td = document.getElementById(id);
+    if (!td) return;
+    
+    const isChecked = giaTri === "Có" ? "checked" : "";
+    // Đảm bảo td không bị ghi đè, chỉ chèn checkbox
+    td.innerHTML = `<input type="checkbox" id="check-${id}" ${isChecked}>`; 
+    td.classList.remove("checked");
+    td.style.fontSize = "14px";
+    td.style.fontWeight = "normal";
 
-  const checkboxElement = document.getElementById(`check-${id}`);
-  if (checkboxElement) {
-    checkboxElement.onchange = () => capNhatNhanh(id);
-  }
+    const checkboxElement = document.getElementById(`check-${id}`);
+    if (checkboxElement) {
+        checkboxElement.onchange = () => capNhatNhanh(id);
+    }
 }
+
+// Hàm hiển thị danh sách nhân viên theo nhóm khi click vào tiêu đề
 function hienThi(id) {
-  const list = document.getElementById(id);
-  const searchInput = document.getElementById("search");
-  if (searchInput.value.trim() !== "") {
-    return;
-  }
-  list.style.display =
-    list.style.display === "none" || list.style.display === ""
-      ? "block"
-      : "none";
-}
-function capNhatNhanh(id) {
-  if (!nhanVienHienTai) return alert("⚠ Hãy chọn nhân viên trước!");
-  const checkbox = document.getElementById(`check-${id}`);
-  const giaTriMoi = checkbox.checked ? "Có" : "Không";
-  lichNV[nhanVienHienTai][id] = giaTriMoi;
-  localStorage.setItem("lichNV", JSON.stringify(lichNV));
+    const list = document.getElementById(id);
+    const searchInput = document.getElementById("search");
+    
+    // Nếu đang tìm kiếm, không thay đổi trạng thái ẩn/hiện
+    if (searchInput && searchInput.value.trim() !== "") {
+        return;
+    }
 
-  const cell = document.getElementById(id);
-  cell.style.transition = "none";
-  cell.style.backgroundColor = giaTriMoi === "Có" ? "#2ecc71" : "#34495e";
-  setTimeout(() => {
-    cell.style.transition = "background-color 0.2s";
-    cell.style.backgroundColor = "var(--color-dark-element)";
-  }, 100);
+    // Chuyển đổi trạng thái ẩn/hiện
+    if (list) {
+        list.style.display = 
+            list.style.display === "none" || list.style.display === ""
+            ? "block"
+            : "none";
+    }
+}
+
+function capNhatNhanh(id) {
+    if (!nhanVienHienTai) return alert("⚠ Hãy chọn nhân viên trước!");
+    const checkbox = document.getElementById(`check-${id}`);
+    const giaTriMoi = checkbox.checked ? "Có" : "Không";
+    
+    // Đảm bảo lịch NV tồn tại
+    if (!lichNV[nhanVienHienTai]) {
+        lichNV[nhanVienHienTai] = {};
+        ids.forEach((i) => (lichNV[nhanVienHienTai][i] = "Không"));
+    }
+
+    lichNV[nhanVienHienTai][id] = giaTriMoi;
+    localStorage.setItem("lichNV", JSON.stringify(lichNV));
+
+    const cell = document.getElementById(id);
+    if (cell) {
+        cell.style.transition = "none";
+        // Đổi màu nhanh để phản hồi (Xanh cho Có, Đỏ cho Không)
+        cell.style.backgroundColor = giaTriMoi === "Có" ? "#2ecc71" : "#e74c3c"; 
+        setTimeout(() => {
+            cell.style.transition = "background-color 0.2s";
+            cell.style.backgroundColor = "transparent"; // Hoặc màu nền mặc định của bảng
+        }, 100);
+    }
 }
 
 function capNhat() {
-  localStorage.setItem("lichNV", JSON.stringify(lichNV));
-  alert("💾 Đã lưu lịch (được cập nhật tự động) cho " + nhanVienHienTai);
+    localStorage.setItem("lichNV", JSON.stringify(lichNV));
+    alert("💾 Đã lưu lịch cho " + nhanVienHienTai + ".");
 }
 
 function resetLuaChon() {
-  if (!nhanVienHienTai) return alert("⚠ Hãy chọn nhân viên trước!");
-  ids.forEach((id) => {
-    const val = lichNV[nhanVienHienTai][id] || "Không";
-    taoCheckbox(id, val);
-  });
+    if (!nhanVienHienTai) return;
+    
+    if (!lichNV[nhanVienHienTai]) {
+        lichNV[nhanVienHienTai] = {};
+        ids.forEach((id) => (lichNV[nhanVienHienTai][id] = "Không"));
+        localStorage.setItem("lichNV", JSON.stringify(lichNV));
+    }
+    
+    // Tải lại các checkbox dựa trên dữ liệu hiện có
+    ids.forEach((id) => {
+        const val = lichNV[nhanVienHienTai][id] || "Không";
+        taoCheckbox(id, val);
+    });
+    alert("🔁 Đã tải lại lịch làm việc hiện tại từ Local Storage.");
 }
 
 function chonNhanVien(ten) {
-  nhanVienHienTai = ten;
-  document.getElementById("tenNV").innerText = "Lịch làm của: " + ten;
-  document.getElementById("ngay").innerText =
-    "Tháng: " + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
+    nhanVienHienTai = ten;
+    const tenNVElement = document.getElementById("tenNV");
+    if (tenNVElement) {
+        tenNVElement.innerText = "Lịch làm của: " + ten;
+    }
+    const ngayElement = document.getElementById("ngay");
+    if (ngayElement) {
+        ngayElement.innerText =
+            "Tháng: " + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
+    }
 
-  if (!lichNV[ten]) {
+    if (!lichNV[ten]) {
+        lichNV[ten] = {};
+        ids.forEach((id) => (lichNV[ten][id] = "Không"));
+    }
+    resetLuaChon();
+}
+
+// Hàm nhận đối tượng nhân viên (nv) thay vì chỉ tên
+function createListItem(nv, nhom) { 
+    const li = document.createElement("li");
+    li.textContent = nv.ten;
+    li.onclick = () => {
+        if (Xoa) {
+            if (confirm("Xóa nhân viên '" + nv.ten + "'?")) {
+                // Lọc bỏ đối tượng có tên tương ứng
+                dsNV[nhom] = dsNV[nhom].filter((item) => item.ten !== nv.ten);
+                delete lichNV[nv.ten];
+                localStorage.setItem("dsNV", JSON.stringify(dsNV));
+                localStorage.setItem("lichNV", JSON.stringify(lichNV));
+                
+                hienThiDanhSach();
+                hienThiDanhSachTongHop(); // Cập nhật danh sách tổng hợp
+                
+                if (nhanVienHienTai === nv.ten) {
+                    nhanVienHienTai = "";
+                    document.getElementById("tenNV").innerText = "Chưa chọn nhân viên";
+                    // Xóa nội dung lịch
+                    ids.forEach((id) => {
+                        const cell = document.getElementById(id);
+                        if(cell) cell.innerHTML = "";
+                    });
+                }
+            }
+        } else {
+            chonNhanVien(nv.ten);
+        }
+    };
+    return li;
+}
+
+// Cập nhật: Thêm nhập Số Điện Thoại (sdt)
+function themNhanVien() {
+    const nhom = prompt("Thêm vào nhóm nào? (ql/pv/tn): ");
+    if (!nhom || !dsNV.hasOwnProperty(nhom)) {
+        return alert("❌ Nhóm không hợp lệ (phải là ql, pv, tn).");
+    }
+    const ten = prompt("Nhập tên nhân viên:");
+    if (!ten) {
+         return alert("❌ Tên nhân viên không được để trống.");
+    }
+    const sdt = prompt("Nhập số điện thoại (Không bắt buộc):");
+    
+    // Kiểm tra trùng lặp tên
+    if (dsNV[nhom].some(nv => nv.ten === ten)) {
+        return alert("❌ Nhân viên này đã tồn tại.");
+    }
+    
+    // Tạo đối tượng nhân viên mới
+    const newEmployee = {
+        ten: ten.trim(),
+        sdt: sdt ? sdt.trim() : "Đang cập nhật" 
+    };
+    
+    dsNV[nhom].push(newEmployee);
+    
+    // Khởi tạo lịch
     lichNV[ten] = {};
     ids.forEach((id) => (lichNV[ten][id] = "Không"));
-  }
-  resetLuaChon();
-}
+    
+    // Lưu
+    localStorage.setItem("dsNV", JSON.stringify(dsNV));
+    localStorage.setItem("lichNV", JSON.stringify(lichNV));
 
-function createListItem(ten, nhom) {
-  const li = document.createElement("li");
-  li.textContent = ten;
-  li.onclick = () => {
-    if (Xoa) {
-      if (confirm("Xóa nhân viên '" + ten + "'?")) {
-        dsNV[nhom] = dsNV[nhom].filter((t) => t !== ten);
-        delete lichNV[ten];
-        localStorage.setItem("dsNV", JSON.stringify(dsNV));
-        localStorage.setItem("lichNV", JSON.stringify(lichNV));
-        hienThiDanhSach();
-        if (nhanVienHienTai === ten) {
-          nhanVienHienTai = "";
-          document.getElementById("tenNV").innerText = "Chưa chọn nhân viên";
-        }
-      }
-    } else {
-      chonNhanVien(ten);
-    }
-  };
-  return li;
-}
-
-function themNhanVien() {
-  const nhom = prompt("Thêm vào nhóm nào? (ql/pv/tn): ");
-  const ten = prompt("Nhập tên nhân viên:");
-  if (!ten || !nhom || !dsNV.hasOwnProperty(nhom)) {
-    return alert("❌ Nhóm không hợp lệ (phải là ql, pv, tn) hoặc tên trống.");
-  }
-
-  if (dsNV[nhom].includes(ten)) {
-    return alert("❌ Nhân viên này đã tồn tại.");
-  }
-  dsNV[nhom].push(ten);
-  lichNV[ten] = {};
-  ids.forEach((id) => (lichNV[ten][id] = "Không"));
-  localStorage.setItem("dsNV", JSON.stringify(dsNV));
-  localStorage.setItem("lichNV", JSON.stringify(lichNV));
-
-  hienThiDanhSach();
-  alert("✅ Thêm nhân viên thành công.");
+    hienThiDanhSach();
+    hienThiDanhSachTongHop(); 
+    alert("✅ Thêm nhân viên thành công.");
 }
 
 function xoaNhanVien() {
-  Xoa = !Xoa;
-  const xoaBtn = document.getElementById("xoaNV");
-  xoaBtn.textContent = Xoa ? "Chọn tên để xóa" : "🗑️ Xóa";
-  const leftPanel = document.querySelector(".left");
-  if (Xoa) {
-    leftPanel.classList.add("deleting");
-  } else {
-    leftPanel.classList.remove("deleting");
-  }
+    Xoa = !Xoa;
+    const xoaBtn = document.getElementById("xoaNV");
+    xoaBtn.textContent = Xoa ? "Click tên để xóa" : "🗑️ Xóa";
+    const leftPanel = document.querySelector(".left"); // Đã thay đổi từ .left sang .capnhat-nhanvien .left
+    if (leftPanel) {
+        if (Xoa) {
+            leftPanel.classList.add("deleting");
+        } else {
+            leftPanel.classList.remove("deleting");
+        }
+    }
+    alert(Xoa ? "Chế độ XÓA đã bật. Click vào tên nhân viên để xóa." : "Chế độ XÓA đã TẮT.");
 }
 
+// Cập nhật: Lặp qua đối tượng nhân viên
 function hienThiDanhSach() {
-  for (let nhom in dsNV) {
-    const ul = document.getElementById(nhom);
-    ul.innerHTML = "";
-    dsNV[nhom].forEach((ten) => {
-      const li = createListItem(ten, nhom);
-      ul.appendChild(li);
-    });
-  }
+    for (let nhom in dsNV) {
+        const ul = document.getElementById(nhom);
+        if (ul) {
+            ul.innerHTML = "";
+            dsNV[nhom].forEach((nv) => { 
+                const li = createListItem(nv, nhom); 
+                ul.appendChild(li);
+            });
+        }
+    }
 }
 
-document.getElementById("search").addEventListener("input", function () {
-  const keyword = this.value.toLowerCase().trim();
-  for (let nhom in dsNV) {
-    const ul = document.getElementById(nhom);
-    const h3 = ul.previousElementSibling;
-    const lis = ul.getElementsByTagName("li");
-    let found = false;
-    for (let li of lis) {
-      if (li.textContent.toLowerCase().includes(keyword)) {
-        li.style.display = "list-item";
-        found = true;
-      } else {
-        li.style.display = "none";
-      }
-    }
-    if (keyword === "") {
-      ul.style.display = "none";
-      h3.style.display = "block";
-    } else {
-      ul.style.display = found ? "block" : "none";
-      h3.style.display = found ? "block" : "none";
-    }
-  }
-});
+/* =======================================================
+    2. HÀM HIỂN THỊ DANH SÁCH TỔNG HỢP (table-body)
+========================================================= */
 
-hienThiDanhSach();
+function hienThiDanhSachTongHop() {
+    const tableBody = document.getElementById('table-body');
+    if (!tableBody) return;
+    
+    tableBody.innerHTML = ""; // Xóa sạch nội dung cũ
+    
+    let stt = 1;
+    
+    for (let nhom in dsNV) {
+        const chucVu = nhomToChucVu[nhom];
+        
+        dsNV[nhom].forEach((nv) => { 
+            const row = document.createElement('tr');
+            
+            // STT
+            const sttCell = document.createElement('td');
+            sttCell.textContent = stt++;
+            row.appendChild(sttCell);
 
+            // Tên Nhân Viên
+            const nameCell = document.createElement('td');
+            nameCell.textContent = nv.ten; 
+            row.appendChild(nameCell);
+            
+            // Chức Vụ
+            const positionCell = document.createElement('td');
+            positionCell.textContent = chucVu;
+            row.appendChild(positionCell);
+            
+            // Số Điện Thoại
+            const phoneCell = document.createElement('td');
+            phoneCell.textContent = nv.sdt; 
+            row.appendChild(phoneCell);
+            
+            tableBody.appendChild(row);
+        });
+    }
+}
+
+
+/* =======================================================
+    3. KHỞI TẠO VÀ SỰ KIỆN
+========================================================= */
+
+// Sự kiện tìm kiếm (đã được tối ưu hóa cho cấu trúc HTML hiện tại)
+const searchInput = document.getElementById("search");
+if (searchInput) {
+    searchInput.addEventListener("input", function () {
+        const keyword = this.value.toLowerCase().trim();
+        for (let nhom in dsNV) {
+            const ul = document.getElementById(nhom);
+            // Lấy h3 (tiêu đề nhóm)
+            const h3 = ul ? ul.previousElementSibling : null; 
+
+            if (!ul || !h3) continue;
+            
+            const lis = ul.getElementsByTagName("li");
+            let found = false;
+            
+            for (let li of lis) {
+                if (li.textContent.toLowerCase().includes(keyword)) {
+                    li.style.display = "list-item";
+                    found = true;
+                } else {
+                    li.style.display = "none";
+                }
+            }
+            
+            if (keyword === "") {
+                // Khi không tìm kiếm, ẩn danh sách (để người dùng click mở)
+                ul.style.display = "none"; 
+                h3.style.display = "block";
+            } else {
+                // Khi tìm kiếm, hiển thị danh sách và tiêu đề nếu có kết quả
+                ul.style.display = found ? "block" : "none";
+                h3.style.display = found ? "block" : "none";
+            }
+        }
+    });
+}
+
+
+// --- Khởi tạo ứng dụng ---
+hienThiDanhSach(); // Hiển thị danh sách ở panel trái
+hienThiDanhSachTongHop(); // Hiển thị danh sách có SĐT ở bảng dưới
+
+// Xóa nội dung mặc định của ô lịch khi khởi tạo
 ids.forEach((id) => {
-  const cell = document.getElementById(id);
-  cell.innerHTML = "";
+    const cell = document.getElementById(id);
+    if(cell) cell.innerHTML = "";
 });
 
-document.getElementById("ngay").innerText =
-  "Tháng: " + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
+// Cập nhật thông tin ngày tháng
+const ngayElement = document.getElementById("ngay");
+if (ngayElement) {
+    ngayElement.innerText =
+        "Tháng: " + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
+}

@@ -128,7 +128,7 @@ function openOrderModal(id, name) {
 
 function confirmOrder() {
     const tableType = document.getElementById('orderTableType').value; 
-    const tableNum = document.getElementById('orderTable').value;
+    const tableNum = parseInt(document.getElementById('orderTable').value);
     const quantity = parseInt(document.getElementById('orderQuantity').value);
 
     if (!tableNum || !quantity) {

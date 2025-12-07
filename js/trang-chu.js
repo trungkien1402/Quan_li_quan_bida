@@ -1,49 +1,172 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Set active menu based on current URL (simple heuristic)
-  const links = document.querySelectorAll('.main-menu a');
-  links.forEach(a => {
-    if (location.pathname.endsWith(a.getAttribute('href')) || location.pathname.includes(a.getAttribute('href')) ){
-      a.classList.add('active');
+// Bật / tắt chế độ chỉnh sửa
+function toggleEdit(tableId, btn) {
+    const table = document.getElementById(tableId);
+    const isEditing = btn.classList.contains("save");
+
+    if (!isEditing) {
+        btn.classList.add("save");
+        btn.textContent = "Lưu";
+
+        [...table.querySelectorAll("td:not(:last-child)")].forEach(td => {
+            td.setAttribute("contenteditable", "true");
+        });
+
+    } else {
+        btn.classList.remove("save");
+        btn.textContent = "Cập Nhật";
+
+        [...table.querySelectorAll("td")].forEach(td => {
+            td.removeAttribute("contenteditable");
+        });
+
+        saveTable(tableId);
     }
-  });
+}
 
-  //Only format elements with class .tq-so.money
-  document.querySelectorAll('.tq-so.money').forEach(el => {
-    const n = Number(String(el.textContent).replace(/[^0-9.-]+/g, ''));
-    if (!isNaN(n)) el.textContent = formatCurrency(n);
-  });
 
-  // Simple table filter: add input with id #table-filter to filter first table on the page
-  const filterInput = document.getElementById('table-filter');
-  if (filterInput){
-    filterInput.addEventListener('input', e => {
-      const q = e.target.value.toLowerCase();
-      const rows = document.querySelectorAll('table tbody tr');
-      rows.forEach(r => {
-        const txt = r.textContent.toLowerCase();
-        r.style.display = txt.includes(q) ? '' : 'none';
-      });
+// Lưu dữ liệu bảng vào localStorage
+function saveTable(tableId) {
+    const table = document.getElementById(tableId);
+    const rows = [...table.rows].slice(1).map(r => {
+        return {
+            name: r.cells[0].innerText,
+            qty: r.cells[1].innerText,
+            unit: r.cells[2].innerText
+        };
     });
-  }
 
-  // Demo: simulate fetching "Số Bàn Đang Chơi" from a data attribute or API
-  const banEl = document.querySelector('.tq-banchoi .tq-so');
-  if (banEl){
-    const simulated = banEl.dataset.count ? Number(banEl.dataset.count) : null;
-    if (simulated !== null) banEl.textContent = simulated;
-  }
+    localStorage.setItem(tableId, JSON.stringify(rows));
+}
 
-  // Mobile menu toggle (if you add a hamburger button with id #hamb)
-  const hamb = document.getElementById('hamb');
-  if (hamb){
-    hamb.addEventListener('click', () => {
-      document.querySelector('.main-menu').classList.toggle('open');
+
+// Tải dữ liệu khi reload
+function loadTable(tableId) {
+    const data = JSON.parse(localStorage.getItem(tableId));
+    if (!data) return;
+
+    const table = document.getElementById(tableId);
+    table.innerHTML = `
+        <tr>
+            <th>Tên Sản Phẩm</th>
+            <th>Số Lượng</th>
+            <th>Đơn Vị</th>
+            <th>Xóa</th>
+        </tr>
+    `;
+
+    data.forEach(item => {
+        const row = table.insertRow();
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>${item.qty}</td>
+            <td>${item.unit}</td>
+            <td><button class="btn-delete" onclick="deleteRow(this)">X</button></td>
+        `;
     });
-  }
+}
 
-});
 
-function formatCurrency(num){
-  // format number with thousands separator and add VND
-  return Number(num).toLocaleString('vi-VN') + ' VND';
+// Thêm dòng mới
+function addRow(tableId) {
+    const table = document.getElementById(tableId);
+    const row = table.insertRow(-1);
+
+    row.innerHTML = `
+        <td contenteditable="true">Tên</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">Đơn Vị</td>
+        <td><button class="btn-delete" onclick="deleteRow(this)">X</button></td>
+    `;
+}
+
+
+// Xóa 1 dòng
+function deleteRow(btn) {
+    const row = btn.parentElement.parentElement;
+    const tableId = row.parentElement.id;
+    row.remove();
+    saveTable(tableId);
+}
+
+
+// Load khi mở trang
+window.onload = () => {
+    loadTable("table-kho");
+    loadTable("table-fastfood");
+};
+// Bật / Tắt chế độ chỉnh sửa
+function toggleEdit(tableId, btn) {
+    const table = document.getElementById(tableId);
+    const editing = table.classList.toggle("editing");
+    btn.textContent = editing ? "Lưu" : "Cập Nhật";
+
+    if (!editing) {
+        saveTable(table);
+    } else {
+        makeEditable(table);
+    }
+}
+
+// biến ô thành input để sửa
+function makeEditable(table) {
+    for (let i = 1; i < table.rows.length; i++) {
+        for (let j = 0; j < table.rows[i].cells.length; j++) {
+            const td = table.rows[i].cells[j];
+            const value = td.textContent.trim();
+            td.innerHTML = `<input class="cell-edit" value="${value}">`;
+        }
+    }
+}
+
+// lưu input -> text
+function saveTable(table) {
+    for (let i = 1; i < table.rows.length; i++) {
+        for (let j = 0; j < table.rows[i].cells.length; j++) {
+            const inp = table.rows[i].cells[j].querySelector("input");
+            if (inp) {
+                table.rows[i].cells[j].textContent = inp.value;
+            }
+        }
+    }
+}
+
+
+
+// -------------------------
+// THÊM HÀNG
+// -------------------------
+
+function addRow(tableId) {
+    const name = document.getElementById('inputName').value.trim();
+    const price = document.getElementById('orderQuantity').value.trim();
+    const unit = document.getElementById('inputPrice').value.trim();
+
+    if (!name || !price || !unit) {
+        alert("Vui lòng nhập đủ thông tin!");
+        return;
+    }
+
+    const table = document.getElementById(tableId);
+
+    const row = table.insertRow(-1);
+
+    row.innerHTML = `
+        <td>${name}</td>
+        <td>${price}</td>
+        <td>${unit}</td>
+        <td><button class="btn-delete" onclick="deleteRow(this)">Xóa</button></td>
+    `;
+
+    // reset form y hệt cách bạn đang làm ở trang menu
+    document.getElementById('inputName').value = '';
+    document.getElementById('inputPrice').value = '';
+    document.getElementById('orderQuantity').value = '';
+}
+
+// -------------------------
+// XÓA HÀNG
+// -------------------------
+function deleteRow(btn) {
+    const row = btn.parentElement.parentElement;
+    row.remove();
 }

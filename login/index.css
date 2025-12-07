@@ -426,8 +426,16 @@ body {
     color: var(--primary-color);
     font-size: 1.4rem;
     font-weight: 900;
-    text-transform: uppercase;
+    text-transform: uppercase; 
     margin-bottom: 20px;
+}
+.footer-logo img {
+    height: 40px;        /* Giới hạn chiều cao cố định */
+    width: auto;         /* Chiều rộng tự động co theo */
+    max-width: 100%;     /* Đảm bảo không bao giờ tràn ra ngoài */
+    object-fit: contain; /* Giữ ảnh không bị méo */
+    margin-right: 10px;  /* Cách chữ bên cạnh một chút */
+    vertical-align: middle; /* Căn giữa với dòng chữ */
 }
 
 .footer-desc, .footer-contact li, .footer-links li, .footer-links a {

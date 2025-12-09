@@ -185,7 +185,7 @@ tr:hover td {
   background: #10b981 !important;
 }
 
-/* CONTENTEDITABLE MODE */
+
 td[contenteditable="true"] {
   background: rgba(56, 189, 248, 0.22);
   border: 1px solid #38bdf8;
@@ -193,14 +193,61 @@ td[contenteditable="true"] {
 }
 
 /* ============================
-   RESPONSIVE
+   RESPONSIVE MOBILE
 ============================ */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+  /* TỔNG QUAN */
   .tong-quan {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; 
+    gap: 20px;
   }
 
+  /* TOP */
   .top {
-    grid-template-columns: 1fr;
+    display: block; 
+    gap: 15px;
+  }
+
+  .top-block {
+    width: 90%;      
+    margin-bottom: 20px;
+    overflow-x: auto; 
+    min-width: auto;  
+  }
+
+  .top table {
+    display: block;   
+    width: 100%;
+    overflow-x: auto;
+    min-width: auto;  
+  }
+
+  /* KHO HÀNG */
+  .kho-block {
+    width: 100%;
+    overflow-x: auto; 
+  }
+
+ 
+  table {
+
+    width: 100%;
+    border-collapse: collapse;
+    min-width: auto; 
+  }
+
+  th, td {
+    
+    font-size: 12px; 
+    padding: 10px;
+  }
+
+  /* BUTTONS */
+  .kho-actions,
+  .btn-add,
+  .btn-delete,
+  .btn-update {
+    width: 100%;       
+    margin-bottom: 10px;
   }
 }

@@ -62,7 +62,7 @@
 }
 .thongke-giochoi-card h2{
     text-align: center;
-    color: #00FCCE; /* Màu Teal nổi bật */
+    color: #00FCCE; 
     margin-bottom: 20px;
 }
 .card-banchoi{
@@ -73,7 +73,7 @@
 .table-selection-area {
     width: 45vh;
     padding: 15px;
-    background-color: #2c2c2c; /* Nền tối của card */
+    background-color: #2c2c2c; 
     border-radius: 8px;
     margin-bottom: 20px;
     color: #ffffff;
@@ -83,7 +83,7 @@
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #009688; /* Màu Teal nổi bật */
+    color: #009688; 
 }
 
 /* Kiểu dáng cho dropdown list */
@@ -96,7 +96,7 @@
     background-color: #1a1a1a;
     color: #ffffff;
     font-size: 16px;
-    appearance: none; /* Xóa kiểu mặc định của trình duyệt */
+    appearance: none; 
     background-repeat: no-repeat;
     background-position: right 10px top 50%;
     background-size: 10px;
@@ -110,7 +110,7 @@
     background-color: #1a1a1a;
     color: #ffffff;
     font-size: 16px;
-    appearance: none; /* Xóa kiểu mặc định của trình duyệt */
+    appearance: none; 
     background-repeat: no-repeat;
     background-position: right 10px top 50%;
     background-size: 10px;
@@ -124,24 +124,24 @@
     background-color: #1a1a1a;
     color: #ffffff;
     font-size: 16px;
-    appearance: none; /* Xóa kiểu mặc định của trình duyệt */
+    appearance: none; 
     background-repeat: no-repeat;
     background-position: right 10px top 50%;
     background-size: 10px;
 }
 
-/* Kiểu dáng cho khung hiển thị kết quả */
+
 .result-display-card {
     width: 40vh;
     padding: 15px;
     border: 1px solid #4a4a4a;
-    border-left: 5px solid #009688; /* Thanh màu teal nhấn mạnh */
+    border-left: 5px solid #009688; 
     border-radius: 6px;
     background-color: #1a1a1a;
     min-height: 50px;
     font-size: 14px;
 }
-/* --- Khối Container (Đã có từ trước) --- */
+/* --- Khối Container --- */
 .thongke-menu{
     margin-top: 30px;
     background-color: #1A1A1A;
@@ -182,11 +182,11 @@
 
 .edit-note {
     font-size: 12px;
-    color: #FFC107; /* Màu vàng cảnh báo */
+    color: #FFC107; 
     font-weight: normal;
 }
 
-/* --- Định dạng Bảng và Tiêu đề (thead) --- */
+/* --- Bảng và Tiêu đề  --- */
 .monan table, .monuoc table {
     width: 100%;
     border-collapse: collapse;
@@ -202,21 +202,21 @@
     text-transform: uppercase;
 }
 
-/* --- Định dạng cho Ô DỮ LIỆU CÓ THỂ CHỈNH SỬA (tbody td) --- */
+/* ---  Ô DỮ LIỆU CÓ  --- */
 .monan td, .monuoc td {
     padding: 10px;
     border-bottom: 1px solid #3a3a3a;
 }
 
-/* Highlight ô đang được chỉnh sửa */
+
 [contenteditable="true"]:focus {
-    background-color: #383838; /* Nền tối hơn */
-    outline: 2px solid #009688; /* Viền Teal nổi bật */
+    background-color: #383838; 
+    outline: 2px solid #009688; 
     color: #ffffff;
     border-radius: 4px;
 }
 
-/* --- Hiệu ứng tương tác (Hover) --- */
+
 .monan tr:hover td, .monuoc tr:hover td {
     background-color: #383838;
 }
@@ -240,40 +240,39 @@
 .save-button:hover {
     background-color: #00796b;
 }
-/* --- Style cho Hàng Tổng Cộng (Total Row) --- */
+/* ---  Hàng Tổng Cộng (Total Row) --- */
 .total-row {
     font-weight: bold;
     font-size: 15px;
-    background-color: #383838; /* Nền tối hơn các hàng dữ liệu */
-    border-top: 2px solid #009688; /* Đường kẻ trên màu Teal */
+    background-color: #383838; 
+    border-top: 2px solid #009688; 
 }
 
-/* Style cho ô TỔNG CỘNG */
+/*  ô TỔNG CỘNG */
 .total-row td:first-child {
     text-align: right;
     padding-right: 15px;
     color: #ffffff;
 }
 
-/* Style cho các số liệu tổng */
+/*  số liệu tổng */
 .total-row .total-figure {
-    background-color: #1a1a1a; /* Nền tối hơn nữa cho các ô số liệu */
-    color: #00FFFF !important; /* Màu Cyan cho số tổng */
+    background-color: #1a1a1a; 
+    color: #00FFFF !important; 
 }
 
-/* Loại bỏ đường kẻ dưới cho hàng cuối cùng */
 .monan table tbody tr:last-child td, 
 .monuoc table tbody tr:last-child td {
     border-bottom: none;
 }
 
-/* Đảm bảo hàng tổng không có hiệu ứng hover */
+
 .monan tr.total-row:hover td, 
 .monuoc tr.total-row:hover td {
     background-color: #383838; /* Giữ nguyên nền */
     color: inherit;
 }
-/* --- Style cho Nút Thêm Hàng --- */
+/* --- Nút Thêm  --- */
 .add-row-button {
     display: block;
     width: 100%;
@@ -292,7 +291,7 @@
     background-color: #303f9f;
 }
 
-/* --- Style cho Nút Xóa (Delete Button) --- */
+/* ---  Nút Xóa  --- */
 .delete-button {
     background-color: #f44336; /* Màu đỏ */
     color: white;
@@ -315,4 +314,168 @@
 .monan td:nth-child(5), .monuoc td:nth-child(5),
 .monan td:nth-child(6), .monuoc td:nth-child(6) {
     text-align: center;
+}
+/* =========================================================
+    RESPONSIVE     
+   ========================================================= */
+
+/* --- DƯỚI 1200px: Thu nhỏ card doanh thu + bảng --- */
+@media (max-width: 1200px) {
+    .container {
+        width: 95%;
+    }
+    .thongke-doanhthu{
+        width: 96%;
+    }
+    .card-doanhthu {
+        gap: 3vh;
+    }
+
+    .card {
+        width: 90%;
+        height: 23vh;
+    }
+
+    .card-banchoi {
+        gap: 3vh;
+    }
+
+    .menu-card {
+        justify-content: center;
+    }
+}
+
+/* --- DƯỚI 900px: Chuyển layout sang dạng cột --- */
+@media (max-width: 900px) {
+
+    .card-doanhthu {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        height: auto;
+    }
+
+    .money {
+        font-size: 32px;
+    }
+
+    /* Giờ chơi */
+    .card-banchoi {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .table-selection-area,
+    #select-pool, #select-snooker, #select-libre,
+    .result-display-card {
+        width: 60vw;
+    }
+
+    .menu-card {
+        flex-direction: column;
+    }
+
+    .monan, .monuoc {
+        width: 95%;
+        min-width: unset;
+    }
+}
+
+/* --- DƯỚI 700px: Tối ưu mobile lớn --- */
+@media (max-width: 700px) {
+
+    .card {
+        width: 70vw;
+    }
+
+    .money {
+        font-size: 28px;
+    }
+
+    .table-selection-area,
+    #select-pool, #select-snooker, #select-libre,
+    .result-display-card {
+        width: 80vw;
+        font-size: 14px;
+    }
+    .table-selection-area {
+        width: 70vw;
+    }
+    .result-display-card {
+        width: 80%;
+
+    }
+    .monan, .monuoc {
+        width: 72vw;
+        overflow-x: auto; 
+    }
+    .monan table, .monuoc table {
+        font-size: 12px;
+    }
+
+    .save-button {
+        width: 80%;
+        font-size: 14px;
+    }
+}
+
+/* --- DƯỚI 500px: Mobile nhỏ (iPhone SE, Android Mini) --- */
+@media (max-width: 500px) {
+
+    .thongke-doanhthu h2,
+    .thongke-giochoi-card h2,
+    .thongke-menu h2 {
+        font-size: 18px;
+    }
+
+    .card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .money {
+        font-size: 24px;
+    }
+
+    .card h3 {
+        font-size: 16px;
+    }
+
+    .table-selection-area,
+    #select-pool, #select-snooker, #select-libre,
+    .result-display-card {
+        width: 73vw;
+        padding: 12px;
+    }
+    .table-selection-area{
+        width: 80vw;
+    }
+    #select-pool, #select-snooker, #select-libre {
+        font-size: 14px;
+        width: 80vw;
+    }
+
+    .monan table, .monuoc table {
+        font-size: 10px;
+        overflow-x: auto;
+    }
+    .monan td, th{
+        padding: 3px;
+    } 
+    .monuoc td, th{
+        padding: 3px;
+    } 
+    .save-button {
+        width: 90%;
+        font-size: 14px;
+    }
+
+    .add-row-button {
+        font-size: 13px;
+        padding: 8px;
+    }
 }

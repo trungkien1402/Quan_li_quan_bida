@@ -71,16 +71,18 @@ function addItem() {
         return;
     }
 
-    const newItem = {
-        id: Date.now().toString(),
-        name: name,
-        price: price,
-        image: image,
-        category: category,
-        sold: 0
+   const newItem = {
+    id: Date.now().toString(),
+    name: name,
+    price: price,
+    image: image,
+    category: category,
+    sold: 0 
     };
 
+
     menuData.push(newItem);
+    // Tăng số lượng bán ra cho TOP
 
     // QUAN TRỌNG: Lưu danh sách mới vào localStorage
     localStorage.setItem('myMenuData', JSON.stringify(menuData));
@@ -195,3 +197,4 @@ function showToast(message) {
 
 // Chạy lần đầu
 renderMenu();
+

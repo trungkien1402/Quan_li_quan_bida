@@ -36,8 +36,8 @@
 }
 
 .tab.active {
-    color: #00c8ff;
-    border-bottom-color: #00c8ff;
+    color: #fb44cd;
+    border-bottom-color: #ff00e6;
 }
 
 .tab:hover {
@@ -53,11 +53,12 @@
 }
 
 /* ===================== CONTAINER BÀN ===================== */
-/* Áp dụng riêng cho nội dung Danh sách bàn */
 .tab-content#table-list .table-group-title { 
-    font-size: 18px;
-    color: #00c8ff;
+    font-size: 30px;
+    color: #60a5fa;
     margin: 15px 0 10px 0;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .table-container {
@@ -91,14 +92,15 @@
     margin-bottom: 5px;
     font-size: 16px;
     font-weight: bold;
-    color: white;
+    color: #60a5fa;
 }
 .table-box h3 {
     margin: 0;
     font-size: 18px;
 }
 .table-info {
-    font-size: 12px;
+    font-size: 18px;
+    font-weight: bold;
     color: #b0b3b8;
     margin: 0 0 10px 0;
 }
@@ -116,11 +118,13 @@
 }
 
 .table-box.trong {
-    border-color: #00b34a; /* Xanh lá cây (Trống) */
+    border: 3px solid #fb44cd; 
+    box-shadow: #fb44cd 0px 0px 10px;
 }
 
 .table-box.dangchoi {
-    border-color: #00c8ff; /* Xanh dương (Đang chơi) */
+    border-color: #60a5fa; /* Xanh dương (Đang chơi) */
+    box-shadow: #60a5fa 0px 0px 10px;
 }
 
 .table-box.datcho {
@@ -447,4 +451,94 @@
 /* Class để ẩn Modal và Tab Content */
 .hidden {
     display: none !important;
+}
+/* ===================== RESPONSIVE ===================== */
+
+/* MÀN HÌNH DƯỚI 1200PX  */
+@media (max-width: 1200px) {
+    .table-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .booking-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MÀN HÌNH DƯỚI 900PX */
+@media (max-width: 900px) {
+
+    .content-wrapper {
+        flex-direction: column;  
+        padding: 15px;
+    }
+
+    .main-area {
+        max-width: 100%;          
+        width: 100%;
+    }
+
+    .bill-box {
+        width: 92%;              
+        margin-top: 20px;
+    }
+
+    .content-title {
+        font-size: 22px;
+    }
+
+    .table-group-title {
+        font-size: 24px;
+    }
+}
+
+/* MÀN HÌNH DƯỚI 700PX  */
+@media (max-width: 700px) {
+    .table-container {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-list {
+        grid-template-columns: 1fr;
+    }
+
+    .tab {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+/* MÀN HÌNH DƯỚI 500PX  */
+@media (max-width: 500px) {
+
+    .content-wrapper {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .bill-box {
+        padding: 15px;
+        font-size: 13px;
+    }
+
+    .table-box {
+        padding: 12px;
+    }
+
+    .timer {
+        font-size: 22px;
+    }
+
+    .btn {
+        font-size: 13px;
+        padding: 7px;
+    }
+
+    .btn-small {
+        font-size: 12px;
+    }
 }

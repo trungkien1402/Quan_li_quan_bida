@@ -1,0 +1,291 @@
+/* === CẤU TRÚC CHUNG & RESET === */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a; /* Nền tối */
+    font-family: 'Courier New', Courier, monospace; /* Font công nghệ */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #00ffea; /* Màu chữ chủ đạo: Xanh Neon */
+}
+
+/* === HEADER STYLE === */
+.main-header {
+    background-color: #0f0f0f;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    border-bottom: 2px solid #ff3399; /* Viền hồng */
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 5px 15px rgba(255, 51, 153, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon { font-size: 30px; }
+
+.logo-text {
+    font-size: 28px;
+    font-weight: 900;
+    color: #ff3399; /* Chữ Logo màu hồng */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px #ff3399;
+}
+
+/* Nút Liên hệ trên Header */
+.btn-header {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background-color: #333333;
+    color: #ff3399;
+    border: 1px solid #ff3399;
+}
+
+.btn-header:hover {
+    background-color: #ff3399;
+    color: white;
+    box-shadow: 0 0 15px #ff3399;
+}
+
+/* === MAIN CONTENT (DANH SÁCH THẺ) === */
+main {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    border: 3px solid #00ffea;
+    box-shadow: 0 0 15px #00ffea, inset 0 0 15px rgba(0, 255, 234, 0.2);
+    border-radius: 12px;
+    padding: 25px;
+    width: 480px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #00ffea, inset 0 0 20px rgba(0, 255, 234, 0.3);
+}
+
+.photo {
+    flex: 0 0 130px;
+    margin-right: 25px;
+}
+
+.photo img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #00ffea;
+    box-shadow: 0 0 15px #00ffea;
+}
+
+.info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.name {
+    font-size: 1.6em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-shadow: 0 0 8px #00ffea;
+}
+
+.detail-row {
+    margin-bottom: 6px;
+    font-size: 1.1em;
+    line-height: 1.4;
+}
+ 
+.label { color: #a3fffa; font-weight: normal; }
+
+/* === FOOTER === */
+footer {
+    background-color: #000000;
+    border-top: 1px solid #00ffea;
+    box-shadow: 0 -5px 10px rgba(0, 255, 234, 0.4);
+    padding: 40px 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.icon { margin-right: 12px; font-size: 1.4em; }
+ 
+footer a {
+    color: #00ffea;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+ 
+footer a:hover {
+    text-shadow: 0 0 15px #00ffea;
+    text-decoration: underline;
+}
+
+.footer-right iframe {
+    border: 3px solid #00ffea;
+    box-shadow: 0 0 15px rgba(0, 255, 234, 0.5);
+    border-radius: 8px;
+    filter: invert(90%) hue-rotate(180deg) contrast(90%);
+    transition: filter 0.3s ease;
+    width: 100%;
+    max-width: 500px;
+}
+ 
+.footer-right iframe:hover {
+    filter: invert(0%) hue-rotate(0deg) contrast(100%);
+}
+
+/* === CSS CHO MODAL LIÊN HỆ (POPUP) === */
+.modal {
+    display: none; /* Mặc định ẩn */
+    position: fixed; 
+    z-index: 9999; /* Luôn nằm trên cùng */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.85); /* Nền đen mờ */
+    backdrop-filter: blur(5px); /* Hiệu ứng mờ background */
+}
+
+.modal-content {
+    background-color: #0f0f0f;
+    margin: 10vh auto; /* Cách trên 10% */
+    padding: 30px;
+    border: 2px solid #ff3399; /* Viền hồng */
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(255, 51, 153, 0.5);
+    position: relative;
+    animation: slideDown 0.4s ease;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+@keyframes slideDown {
+    from {transform: translateY(-50px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}
+
+.close-btn {
+    color: #888;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    transition: 0.3s;
+}
+
+.close-btn:hover { color: #ff3399; }
+
+.modal-title {
+    color: #ff3399;
+    border-bottom: 1px solid #ff3399;
+    padding-bottom: 15px;
+    margin-top: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    background: #1a1a1a;
+}
+
+/* Hiệu ứng hover vào các dòng liên hệ */
+.contact-row.link:hover {
+    background-color: #ff3399;
+    color: #fff;
+    box-shadow: 0 0 15px #ff3399;
+    transform: scale(1.02);
+    border-color: #ff3399;
+    font-weight: bold;
+}
+
+.c-icon { margin-right: 15px; font-size: 1.4em; }
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .main-header { padding: 0 15px; }
+    .logo-text { font-size: 20px; }
+    .footer-content { flex-direction: column; align-items: center; }
+    .footer-left, .footer-right { width: 100%; text-align: center; }
+    .card { width: 100%; }
+}

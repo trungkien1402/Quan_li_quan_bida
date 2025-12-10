@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Nhân Viên - N10</title>
+    <link rel="stylesheet" href="inf.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="main-header">
+            <div class="logo-area">
+                <span class="logo-icon">🎱</span> 
+                <span class="logo-text">N10 CLUB</span>
+            </div>
+    
+            <div class="account-area">
+                <a href="#" class="btn-header btn-contact">Liên hệ</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="card">
+            <div class="photo"><img src="https://i.imgur.com/8k6gJ6s.jpg" alt="NV1"></div>
+            <div class="info">
+                <div class="name">Nguyễn Văn A</div>
+                <div class="detail-row"><span class="label">MSSV:</span> 2023.CYBER.01</div>
+                <div class="detail-row"><span class="label">Chức vụ:</span> System Architect</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="photo"><img src="https://i.imgur.com/9L6gJ7t.jpg" alt="NV2"></div>
+            <div class="info">
+                <div class="name">Trần Thị B</div>
+                <div class="detail-row"><span class="label">MSSV:</span> 2023.CYBER.02</div>
+                <div class="detail-row"><span class="label">Chức vụ:</span> UI/UX Lead</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="photo"><img src="https://i.imgur.com/7K8hI9u.jpg" alt="NV3"></div>
+            <div class="info">
+                <div class="name">Lê Văn C</div>
+                <div class="detail-row"><span class="label">MSSV:</span> 2023.CYBER.03</div>
+                <div class="detail-row"><span class="label">Chức vụ:</span> 3D Modeler</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="photo"><img src="https://i.imgur.com/6J5gH4v.jpg" alt="NV4"></div>
+            <div class="info">
+                <div class="name">Phạm Thị D</div>
+                <div class="detail-row"><span class="label">MSSV:</span> 2023.CYBER.04</div>
+                <div class="detail-row"><span class="label">Chức vụ:</span> Data Analyst</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="photo"><img src="https://i.imgur.com/5I4fG3w.jpg" alt="NV5"></div>
+            <div class="info">
+                <div class="name">Hoàng Văn E</div>
+                <div class="detail-row"><span class="label">MSSV:</span> 2023.CYBER.05</div>
+                <div class="detail-row"><span class="label">Chức vụ:</span> AI Engineer</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-item">
+                    <span class="icon">📞</span>
+                    <a href="tel:0123456789">Hotline:0123.456.789</a>
+                </div>
+                <div class="footer-item">
+                    <span class="icon">✉️</span>
+                    <a href="mailto:contact@cybercorp.net">contact@cybercorp.net</a>
+                </div>
+                <div class="footer-item">
+                    <span class="icon">🏢</span>
+                    <span>Tầng 68, Tòa nhà Bitexco, Quận 1, TP.HCM, Việt Nam</span>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7839.036433951002!2d106.704278!3d10.771565!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f413f54ac97%3A0x862a9c99533579b3!2zVG_DoCBuaMOgIEJJVEVYQ08sIDQgSOG7kyBUw7luZyBN4bqtdSwgQuG6v24gTmdow6ksIFF14bqtbiAxLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmggNzAwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2sus!4v1765204533539!5m2!1svi!2sus" width="800" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </footer>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">×</span>
+            <h2 class="modal-title">THÔNG TIN LIÊN HỆ</h2>
+           
+            <div class="contact-list">
+                <div class="contact-row">
+                    <span class="c-icon">📞</span>
+                    <span class="c-text">0909.999.999</span>
+                </div>
+               
+                <a href="https://www.facebook.com/" target="_blank" class="contact-row link">
+                    <span class="c-icon">📘</span>
+                    <span class="c-text">Facebook Profile</span>
+                </a>
+               
+                <a href="https://github.com/" target="_blank" class="contact-row link">
+                    <span class="c-icon">🐙</span>
+                    <span class="c-text">GitHub Repository</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var modal = document.getElementById("contactModal");
+        var btn = document.querySelector(".btn-contact"); // Nút liên hệ
+        var span = document.getElementsByClassName("close-btn")[0]; // Nút đóng
+
+        // 1. Bấm nút Liên hệ -> Mở Popup
+        btn.onclick = function(e) {
+            e.preventDefault(); 
+            modal.style.display = "block";
+        }
+
+        // 2. Bấm nút X -> Đóng Popup
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // 3. Bấm ra ngoài vùng Popup -> Đóng Popup
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
